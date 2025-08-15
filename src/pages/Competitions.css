@@ -1,0 +1,55 @@
+.upcoming-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.competition-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px 40px;
+  max-width: 450px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.competition-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 0.9rem;
+  margin: 6px 0;
+}
+
+.registration-text {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: black;
+}
+
+.register-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.register-btn:hover {
+  background: #0056b3;
+}

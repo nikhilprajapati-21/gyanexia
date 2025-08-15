@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -23,15 +24,18 @@ const Home = () => {
 
             {/* Desktop Navigation */}
             <nav className="desktop-nav">
-              <a href="#" className="nav-link">Home</a>
+              <Link to="/" className="nav-link">Home</Link>
               <a href="#" className="nav-link">About</a>
-              <a href="#" className="nav-link">Previous Results</a>
-              <a href="#" className="nav-link">Competitions</a>
+              <Link to="/previous-results" className="nav-link">Previous Results</Link>
+              <Link to="/competitions" className="nav-link">Competitions</Link>
               <a href="#" className="nav-link">Contact Us</a>
             </nav>
 
             {/* Mobile menu button */}
-            <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
               {isMenuOpen ? '✕' : '☰'}
             </button>
           </div>
@@ -40,10 +44,10 @@ const Home = () => {
           {isMenuOpen && (
             <div className="mobile-nav">
               <nav className="mobile-nav-links">
-                <a href="#" className="nav-link">Home</a>
+                <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
                 <a href="#" className="nav-link">About</a>
-                <a href="#" className="nav-link">Previous Results</a>
-                <a href="#" className="nav-link">Competitions</a>
+                <Link to="/previous-results" className="nav-link" onClick={() => setIsMenuOpen(false)}>Previous Results</Link>
+                <Link to="/competitions" className="nav-link" onClick={() => setIsMenuOpen(false)}>Competitions</Link>
                 <a href="#" className="nav-link">Contact Us</a>
               </nav>
             </div>
@@ -85,8 +89,8 @@ const Home = () => {
                 <div className="founder-image-container">
                   <div className="founder-image">
                     <img
-                    //   src="/nikhil.jpg"
-                    //   alt="Nikhil Prajapati"
+                      // src="/nikhil.jpg"
+                      // alt="Nikhil Prajapati"
                       className="founder-img"
                     />
                   </div>
@@ -100,7 +104,7 @@ const Home = () => {
                     </div>
 
                     <p className="founder-bio">
-                     Hii, I am Nikhil Prajapati, a student at IIT Kanpur and the founder of Gyanexia.
+                      Hii, I am Nikhil Prajapati, a student at IIT Kanpur and the founder of Gyanexia.
                     </p>
 
                     <blockquote className="founder-quote">
@@ -169,10 +173,10 @@ const Home = () => {
             <div className="footer-links">
               <h3 className="footer-heading">Quick Links</h3>
               <ul className="footer-list">
-                <li><a href="#" className="footer-link">Home</a></li>
+                <li><Link to="/" className="footer-link">Home</Link></li>
                 <li><a href="#" className="footer-link">About</a></li>
                 <li><a href="#" className="footer-link">Services</a></li>
-                <li><a href="#" className="footer-link">Competitions</a></li>
+                <li><Link to="/competitions" className="footer-link">Competitions</Link></li>
               </ul>
             </div>
 
