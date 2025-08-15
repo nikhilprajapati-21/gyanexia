@@ -16,7 +16,7 @@ export default function PreviousResults() {
       <div className="results-grid">
         {images.map((src, idx) => (
           <div key={idx} className="result-card">
-            <img src={src} alt={`Result ${idx + 1}`} className="result-img" />
+            <img src={src} alt={'image'} className="result-img" />
           </div>
         ))}
       </div>
