@@ -40,7 +40,7 @@ const Footer = () => {
             <ul className="footer-list">
               <li className="footer-contact-item">
                 <span className="footer-contact-icon">📞</span>
-                <span>+91 8429287344</span>
+                <span>+91 8840284749</span>
               </li>
               <li className="footer-contact-item">
                 <span className="footer-contact-icon">✉️</span>

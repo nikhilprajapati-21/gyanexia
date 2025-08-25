@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 
@@ -21,15 +20,19 @@ const Home = () => {
             <p className="hero-description">
               Empowering minds through knowledge and innovation. Your journey to excellence starts here.
             </p>
-            <div className="hero-buttons">
-              <button className="btn-primary">Explore Our Services</button>
-              <button className="btn-secondary">Learn More</button>
+
+            {/* Scrolling Announcement */}
+            <div className="marquee-container">
+              <div className="marquee-content">
+                <span>Upcoming Competition in December 2025 - "Gyanotsav 2.0"</span>
+                <span>Registration will start from 1st October 2025!</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Meet Our Founder */}
+      {/* Founder Section */}
       <section className="founder-section">
         <div className="section-content">
           <div className="section-header">
@@ -47,13 +50,12 @@ const Home = () => {
                     <img className="founder-img" alt="Founder" />
                   </div>
                 </div>
-
                 <div className="founder-details">
                   <div className="founder-info">
                     <h3 className="founder-name">Nikhil Prajapati</h3>
                     <p className="founder-title">Founder</p>
                     <p className="founder-bio">
-                      Hii, I am Nikhil Prajapati, a student at IIT Kanpur and the founder of Gyanexia.
+                      Hi, I am Nikhil Prajapati, a student at IIT Kanpur and the founder of Gyanexia.
                     </p>
                     <blockquote className="founder-quote">
                       "Education is the most powerful weapon which you can use to change the world."
@@ -66,7 +68,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Mission */}
+      {/* Mission Section */}
       <section className="mission-section">
         <div className="section-content">
           <h2 className="section-title">Our Mission</h2>

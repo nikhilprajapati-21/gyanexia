@@ -12,7 +12,7 @@ const ContactUs = () => {
       <div className="contact-card">
         <div className="contact-item">
           <span className="contact-icon">📞</span>
-          <span className="contact-text">+91 8429287344</span>
+          <span className="contact-text">+91 8840284749</span>
         </div>
 
         <div className="contact-item">

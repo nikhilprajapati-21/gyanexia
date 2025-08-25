@@ -19,11 +19,11 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px; /* space between image and text */
+  gap: 8px;
 }
 
 .logo-img {
-  width: 40px;   /* adjust size */
+  width: 40px;
   height: auto;
 }
 
@@ -32,7 +32,6 @@
   font-weight: bold;
   color: #2c3e50;
 }
-
 
 /* Desktop nav */
 .desktop-nav {
@@ -44,11 +43,30 @@
   text-decoration: none;
   color: #2c3e50;
   font-weight: 500;
+  position: relative;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
   color: #007bff;
+}
+
+/* NEW Badge */
+.new-badge {
+  background: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
 }
 
 /* Mobile button */
@@ -60,7 +78,7 @@
   cursor: pointer;
 }
 
-/* Mobile nav (hidden by default) */
+/* Mobile nav */
 .mobile-nav {
   display: none;
   background: #f9f9f9;
