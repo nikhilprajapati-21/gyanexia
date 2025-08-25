@@ -26,6 +26,8 @@ const Home = () => {
               <div className="marquee-content">
                 <span>Upcoming Competition in December 2025 - "Gyanotsav 2.0"</span>
                 <span>Registration will start from 1st October 2025!</span>
+                <span>Upcoming Competition in December 2025 - "Gyanotsav 2.0"</span>
+                <span>Registration will start from 1st October 2025!</span>
               </div>
             </div>
           </div>

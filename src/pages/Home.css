@@ -163,33 +163,30 @@ h2 {
   width: 100%;
   overflow: hidden;
   margin-top: 20px;
-  /* border-top: 2px solid #ff0073;
-  border-bottom: 2px solid #ff0073; */
   padding: 10px 0;
+  position: relative;
 }
 
 .marquee-content {
   display: inline-flex;
-  gap: 50px;
+  gap: 80px;
   font-size: 1.3rem;
   font-weight: bold;
   color: #ff0073;
-  animation: marquee 12s linear infinite;
+  white-space: nowrap;
+  animation: marquee 15s linear infinite;
 }
 
 .marquee-content span {
   display: inline-block;
-  white-space: nowrap;
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
+
+
 
 /* Founder Section */
 .founder-section {
