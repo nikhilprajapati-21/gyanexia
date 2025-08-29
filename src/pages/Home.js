@@ -4,9 +4,39 @@ import "./Home.css";
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  // ✅ Slider state
+  const images = [
+    "/Result1.jpg",
+    "/Result2.jpg",
+    "/Result5.jpg",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Slider handlers
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
     <div className="home-container">
@@ -31,6 +61,25 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ✅ Slider Section */}
+      <section className="slider-section">
+        <div className="slider-container">
+          <button className="slider-btn prev" onClick={handlePrev}>
+            &#10094;
+          </button>
+          <div className="slider-image-container">
+            <img
+              src={images[currentIndex]}
+              alt="Slide"
+              className="slider-image"
+            />
+          </div>
+          <button className="slider-btn next" onClick={handleNext}>
+            &#10095;
+          </button>
         </div>
       </section>
 

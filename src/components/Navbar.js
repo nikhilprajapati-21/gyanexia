@@ -22,6 +22,7 @@ const Navbar = () => {
           <Link to="/competitions" className="nav-link">
             Competitions <span className="new-badge">NEW</span>
           </Link>
+          <Link to="/sponsors" className="nav-link">Sponsors</Link>
           <Link to="/contact" className="nav-link">Contact Us</Link>
         </nav>
 
@@ -44,6 +45,7 @@ const Navbar = () => {
             <Link to="/competitions" className="nav-link" onClick={() => setIsMenuOpen(false)}>
               Competitions <span className="new-badge">NEW</span>
             </Link>
+            <Link to="/sponsors" className="nav-link" onClick={() => setIsMenuOpen(false)}>Sponsors</Link>
             <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
           </nav>
         </div>

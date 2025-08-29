@@ -1,0 +1,59 @@
+/* Container */
+.sponsors-container {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Title */
+.sponsors-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.sponsors-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Grid */
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sponsor card */
+.sponsor-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo */
+.sponsor-logo {
+  max-width: 150px;
+  max-height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Sponsor name */
+.sponsor-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}

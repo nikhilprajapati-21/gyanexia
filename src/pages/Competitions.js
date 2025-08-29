@@ -38,7 +38,7 @@ export default function UpcomingCompetitions() {
           rel="noopener noreferrer"
           className="download-btn"
         >
-          📘 Download Sample Papers (PDF)
+           Download Sample Papers (PDF)
         </a>
       </div>
     </div>
