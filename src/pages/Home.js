@@ -63,7 +63,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+          <h1>Recent activity- "Gyanotsav Competition"</h1>
       {/* ✅ Slider Section */}
       <section className="slider-section">
         <div className="slider-container">
@@ -133,4 +133,5 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home;  
+
