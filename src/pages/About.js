@@ -12,9 +12,11 @@ const About = () => {
 
       <div className="about-content">
         <p>
-          Gyanexia was founded with the mission to make education accessible,
-          engaging, and impactful. We believe learning should be an experience that
-          transforms lives and inspires innovation.
+          At Gyanexia, we believe that every student deserves access to quality 
+          education, no matter their background. Education is the key to opening
+           doors of opportunity, and we are committed to making learning affordable
+            and accessible for all. Our platform is designed to support underprivileged 
+            students by providing them with the knowledge, resources, and guidance they need to succeed.
         </p>
         <p>
           Our goal is to bridge the gap between knowledge and opportunity by
@@ -27,15 +29,17 @@ const About = () => {
         <div className="highlight-card">
           <h3>🎯 Our Mission</h3>
           <p>
-            To create meaningful opportunities for learning and growth by making
-            education interactive and accessible for everyone.
+            Our mission is to provide quality education at minimum fees so that underprivileged
+             students can dream big, learn better, and achieve their goals. We aim to bridge 
+             the gap between talent and opportunity by creating a fair and supportive learning environment.
           </p>
         </div>
         <div className="highlight-card">
           <h3>🌍 Our Vision</h3>
           <p>
-            To be a global hub of innovation and knowledge sharing, inspiring
-            students and professionals to achieve excellence.
+            Our vision is to build a future where no child is left behind because of financial barriers. 
+            We want to empower students with knowledge, skills, and confidence, so they can contribute 
+            to society and create a brighter tomorrow for themselves and others.
           </p>
         </div>
       </div>

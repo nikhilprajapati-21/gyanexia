@@ -5,7 +5,7 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // ✅ Slider state
-  const images = ["/Result1.jpg", "/Result2.jpg", "/Result5.jpg"];
+  const images = ["/Result1.jpg", "/Result2.jpg", "/Result5.jpg", "Result9.jpg"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -125,17 +125,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="mission-section">
-        <div className="section-content">
-          <h2 className="section-title">Our Mission</h2>
-          <p className="mission-text">
-            At Gyanexia, we believe in the power of knowledge to transform
-            lives. We're dedicated to providing innovative solutions that make
-            learning accessible, engaging, and effective for everyone.
-          </p>
-        </div>
-      </section>
+      
+      
     </div>
   );
 };
