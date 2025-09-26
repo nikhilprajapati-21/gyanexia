@@ -1,3 +1,4 @@
+/* Container */
 .upcoming-container {
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 6px 0;
 }
 
@@ -74,4 +75,155 @@ p {
 
 .download-btn:hover {
   background: #1e7e34;
+}
+
+/* Overlay */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2000;
+}
+
+/* Form box */
+.form-container {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 850px; /* wider for horizontal layout */
+  max-width: 95%;
+  max-height: 95vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+  
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Arrange form in row for desktop */
+.form-row {
+  display: flex;
+  gap: 20px; /* adds spacing between inputs */
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Each field takes half space */
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile: stack inputs vertically */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 10px; /* smaller gap for mobile */
+  }
+}
+
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Subjects Preview */
+.subjects-box {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.subjects-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Buttons */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover { background: #218838; }
+.cancel-btn:hover { background: #c82333; }
+
+/* ✅ Responsive: stack vertically on mobile */
+@media (max-width: 768px) {
+  .form-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.payment-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.pay-btn {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  margin-top: 15px;
+}
+
+.pay-btn:hover {
+  background: #e68900;
 }
