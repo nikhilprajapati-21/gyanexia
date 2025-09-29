@@ -1,35 +1,65 @@
 import React, { useState } from "react";
 import "./Competitions.css";
+import { db } from "../firebase";
+ // ✅ import Firestore instance
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 
 export default function UpcomingCompetitions() {
   const [showForm, setShowForm] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false); // ✅ track if submitted
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     fatherName: "",
     studentClass: "",
-    stream: "",
+    stream: "", 
     address: "",
     medium: "",
     extraSubject: "",
   });
+
+  // 🔹 Store Firestore doc ID after saving
+  const [docId, setDocId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // 🔹 Save registration to Firestore
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setFormSubmitted(true); // ✅ show payment option instead of closing
+    try {
+      const docRef = await addDoc(collection(db, "registrations"), {
+        ...formData,
+        paymentStatus: "Pending", // default before payment
+        timestamp: new Date(),
+      });
+      setDocId(docRef.id);
+      console.log("Form Submitted & Saved:", formData);
+      setFormSubmitted(true);
+    } catch (error) {
+      console.error("Error saving data:", error);
+      alert("❌ Something went wrong! Try again.");
+    }
   };
 
-  // ✅ Handle Pay Now
-  const handlePayNow = () => {
+  // 🔹 Update payment status
+  const handlePayNow = async () => {
     alert("Redirecting to payment gateway...");
-    window.open("https://pay.google.com", "_blank"); // Example placeholder
-    setShowForm(false); // Close modal after payment
+    window.open("https://pay.google.com", "_blank"); // Example gateway link
+
+    if (docId) {
+      try {
+        await updateDoc(doc(db, "registrations", docId), {
+          paymentStatus: "Paid",
+        });
+        console.log("✅ Payment status updated for:", docId);
+      } catch (error) {
+        console.error("Error updating payment status:", error);
+      }
+    }
+
+    setShowForm(false);
     setFormSubmitted(false);
   };
 
@@ -42,7 +72,8 @@ export default function UpcomingCompetitions() {
         <h2 className="competition-name">Gyanotsav 2.0</h2>
         <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
         <p><strong>Exam Date:</strong> 14 December 2025</p>
-        <p><strong>Mode:</strong> Offline</p>
+        <p><strong>Exam Mode:</strong> Offline</p>
+        <p><strong>Medium:</strong> Both Hindi and English(As per your choice)</p>
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>Registration will start from 1st October</strong>
@@ -56,7 +87,7 @@ export default function UpcomingCompetitions() {
       {/* Sample Papers Card */}
       <div className="competition-card">
         <h2 className="competition-name">Sample Papers for Gyanotsav 2.0</h2>
-        <p>Practice these given sample papers.</p>
+        <p>Will be available soon!!</p>
         <a
           href="/sample-papers.pdf"
           target="_blank"
