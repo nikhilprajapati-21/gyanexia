@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Competitions.css";
-import { db } from "../firebase";
- // ✅ import Firestore instance
+import { db } from "../firebase"; // ✅ Firestore instance
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 
 export default function UpcomingCompetitions() {
@@ -11,14 +10,13 @@ export default function UpcomingCompetitions() {
     name: "",
     fatherName: "",
     studentClass: "",
-    stream: "", 
+    stream: "",
     address: "",
     medium: "",
     extraSubject: "",
   });
 
-  // 🔹 Store Firestore doc ID after saving
-  const [docId, setDocId] = useState(null);
+  const [docId, setDocId] = useState(null); // 🔹 Store Firestore doc ID
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +29,7 @@ export default function UpcomingCompetitions() {
     try {
       const docRef = await addDoc(collection(db, "registrations"), {
         ...formData,
-        paymentStatus: "Pending", // default before payment
+        paymentStatus: "Pending",
         timestamp: new Date(),
       });
       setDocId(docRef.id);
@@ -46,7 +44,7 @@ export default function UpcomingCompetitions() {
   // 🔹 Update payment status
   const handlePayNow = async () => {
     alert("Redirecting to payment gateway...");
-    window.open("https://pay.google.com", "_blank"); // Example gateway link
+    window.open("https://pay.google.com", "_blank");
 
     if (docId) {
       try {
@@ -63,6 +61,29 @@ export default function UpcomingCompetitions() {
     setFormSubmitted(false);
   };
 
+  // 🔹 Function to get subjects list dynamically
+  const getSubjects = () => {
+    const { studentClass, stream, extraSubject } = formData;
+    let subjects = [];
+
+    if (["11", "12"].includes(studentClass)) {
+      // Fixed for class 11 & 12
+      subjects = ["Science (Physics + Chemistry)", "Logical Questions"];
+      if (stream) {
+        subjects.push(stream); // Maths or Biology
+      }
+    } else {
+      // For class 5–10
+      subjects = ["Maths", "Science", "Logical Questions"];
+    }
+
+    if (extraSubject) {
+      subjects.push(extraSubject);
+    }
+
+    return subjects;
+  };
+
   return (
     <div className="upcoming-container">
       <h1 className="title">Upcoming Competitions</h1>
@@ -73,10 +94,10 @@ export default function UpcomingCompetitions() {
         <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
         <p><strong>Exam Date:</strong> 14 December 2025</p>
         <p><strong>Exam Mode:</strong> Offline</p>
-        <p><strong>Medium:</strong> Both Hindi and English(As per your choice)</p>
+        <p><strong>Medium:</strong> Both Hindi and English (As per your choice)</p>
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
-          <strong>Registration will start from 1st October</strong>
+          <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
         </p>
 
         <button className="register-btn" onClick={() => setShowForm(true)}>
@@ -211,15 +232,11 @@ export default function UpcomingCompetitions() {
 
                 {/* Subjects Preview */}
                 <div className="subjects-box">
-                  <p><strong>Subjects:</strong></p>
+                  <p><strong>Your Subjects:</strong></p>
                   <ul>
-                    <li>Maths</li>
-                    <li>Science</li>
-                    <li>Logical Questions</li>
-                    {formData.extraSubject && <li>{formData.extraSubject}</li>}
-                    {["11", "12"].includes(formData.studentClass) && formData.stream && (
-                      <li>{formData.stream}</li>
-                    )}
+                    {getSubjects().map((subj, idx) => (
+                      <li key={idx}>{subj}</li>
+                    ))}
                   </ul>
                 </div>
 

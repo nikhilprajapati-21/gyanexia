@@ -52,13 +52,21 @@ const Home = () => {
             <div className="marquee-container">
               <div className="marquee-content">
                 <span>
-                  Upcoming Competition in December 2025 - "Gyanotsav 2.0"
+                  🚀 Registration is now open for "Gyanotsav 2.0" Competition 
                 </span>
-                <span>Registration will start from 1st October 2025!</span>
+                <span>Enroll now!!🎯</span>
                 <span>
-                  Upcoming Competition in December 2025 - "Gyanotsav 2.0"
+                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
                 </span>
-                <span>Registration will start from 1st October 2025!</span>
+                <span>Enroll now!!🎯</span>
+                <span>
+                  🚀 Registration is now open for "Gyanotsav 2.0" Competition 
+                </span>
+                <span>Enroll now!!🎯</span>
+                <span>
+                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
+                </span>
+                <span>Enroll now!!🎯</span>
               </div>
             </div>
           </div>

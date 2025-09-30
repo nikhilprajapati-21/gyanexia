@@ -17,7 +17,7 @@ const ContactUs = () => {
 
         <div className="contact-item">
           <span className="contact-icon">✉️</span>
-          <span className="contact-text">founder@gyanexia.com</span>
+          <span className="contact-text">prajapati09297@gmail.com</span>
         </div>
 
         <div className="contact-item">

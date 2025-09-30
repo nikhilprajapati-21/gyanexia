@@ -170,7 +170,7 @@ h2 {
 .marquee-content {
   display: inline-flex;
   gap: 80px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #ff0073;
   white-space: nowrap;

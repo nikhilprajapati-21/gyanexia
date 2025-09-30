@@ -44,7 +44,7 @@ const Footer = () => {
               </li>
               <li className="footer-contact-item">
                 <span className="footer-contact-icon">✉️</span>
-                <span>info@gyanexia.com</span>
+                <span>prajapati09297@gmail.com</span>
               </li>
             </ul>
           </div>
