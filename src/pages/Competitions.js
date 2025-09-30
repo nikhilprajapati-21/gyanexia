@@ -98,6 +98,7 @@ export default function UpcomingCompetitions() {
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
+          <h2>23% Off!!</h2>
         </p>
 
         <button className="register-btn" onClick={() => setShowForm(true)}>
