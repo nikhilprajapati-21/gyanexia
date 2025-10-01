@@ -6,6 +6,9 @@ import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 export default function UpcomingCompetitions() {
   const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showQR, setShowQR] = useState(false); // 🔹 Toggle QR popup
+  const [receipt, setReceipt] = useState(null); // 🔹 Uploaded receipt
+
   const [formData, setFormData] = useState({
     name: "",
     fatherName: "",
@@ -41,17 +44,28 @@ export default function UpcomingCompetitions() {
     }
   };
 
-  // 🔹 Update payment status
-  const handlePayNow = async () => {
-    alert("Redirecting to payment gateway...");
-    window.open("https://pay.google.com", "_blank");
+  // 🔹 Handle receipt upload
+  const handleReceiptUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setReceipt(file);
+    }
+  };
+
+  // 🔹 Confirm payment after receipt upload
+  const handleConfirmPayment = async () => {
+    if (!receipt) {
+      alert("⚠️ Please upload your payment receipt before confirming!");
+      return;
+    }
 
     if (docId) {
       try {
         await updateDoc(doc(db, "registrations", docId), {
-          paymentStatus: "Paid",
+          paymentStatus: "Receipt Uploaded",
         });
-        console.log("✅ Payment status updated for:", docId);
+        console.log("✅ Receipt uploaded for:", docId);
+        alert("✅ Receipt uploaded successfully! We will verify your payment.");
       } catch (error) {
         console.error("Error updating payment status:", error);
       }
@@ -59,6 +73,8 @@ export default function UpcomingCompetitions() {
 
     setShowForm(false);
     setFormSubmitted(false);
+    setShowQR(false);
+    setReceipt(null);
   };
 
   // 🔹 Function to get subjects list dynamically
@@ -67,13 +83,11 @@ export default function UpcomingCompetitions() {
     let subjects = [];
 
     if (["11", "12"].includes(studentClass)) {
-      // Fixed for class 11 & 12
       subjects = ["Science (Physics + Chemistry)", "Logical Questions"];
       if (stream) {
         subjects.push(stream); // Maths or Biology
       }
     } else {
-      // For class 5–10
       subjects = ["Maths", "Science", "Logical Questions"];
     }
 
@@ -152,7 +166,7 @@ export default function UpcomingCompetitions() {
                   </div>
                 </div>
 
-                {/* Row 2: Class + Stream (if 11/12) */}
+                {/* Row 2: Class + Stream */}
                 <div className="form-row">
                   <div className="form-group">
                     <label>Class:</label>
@@ -257,9 +271,36 @@ export default function UpcomingCompetitions() {
               <div className="payment-section">
                 <h3>✅ Registration Successful!</h3>
                 <p>Please proceed with payment to complete your registration.</p>
-                <button className="pay-btn" onClick={handlePayNow}>
+                <button className="pay-btn" onClick={() => setShowQR(true)}>
                   Pay Now
                 </button>
+
+                {/* QR Modal */}
+                {showQR && (
+                  <div className="qr-overlay">
+                    <div className="qr-container">
+                      <h3>Scan & Pay</h3>
+                      {/* 🔹 Replace qr.png with your QR code image */}
+                      <img src="/qr.jpg" alt="QR Code" className="qr-image" />
+
+                      {/* Upload Receipt */}
+                      <div className="upload-box">
+                        <label>Upload Payment Receipt:</label>
+                        <input type="file" accept="image/*" onChange={handleReceiptUpload} />
+                        {receipt && <p className="file-name">📂 {receipt.name}</p>}
+                      </div>
+
+                      <div className="qr-buttons">
+                        <button className="confirm-btn" onClick={handleConfirmPayment}>
+                          Confirm Payment
+                        </button>
+                        <button className="cancel-btn" onClick={() => setShowQR(false)}>
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
