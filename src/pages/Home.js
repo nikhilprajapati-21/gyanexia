@@ -116,10 +116,10 @@ const Home = () => {
                 </div>
                 <div className="founder-details">
                   <div className="founder-info">
-                    <h3 className="founder-name">Nikhil Prajapati</h3>
+                    <h3 className="founder-name">Nikhil Kumar</h3>
                     <p className="founder-title">Founder</p>
                     <p className="founder-bio">
-                      Hi, I am Nikhil Prajapati, a student at IIT Kanpur and the
+                      Hi, I am Nikhil Kumar, a student at IIT Kanpur and the
                       founder of Gyanexia.
                     </p>
                     <blockquote className="founder-quote">
