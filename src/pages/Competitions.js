@@ -139,6 +139,7 @@ export default function UpcomingCompetitions() {
         <div className="form-overlay">
           <div className="form-container">
             <h2>Gyanotsav 2.0 Registration</h2>
+            <h3>Registration fees: ₹70/-</h3>
 
             {!formSubmitted ? (
               <form onSubmit={handleSubmit}>

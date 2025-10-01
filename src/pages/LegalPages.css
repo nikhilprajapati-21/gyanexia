@@ -1,0 +1,49 @@
+.legal-container {
+  max-width: 900px;
+  margin: 80px auto; /* add spacing below navbar */
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+.legal-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #222;
+  text-align: center;
+}
+
+.legal-container h2 {
+  font-size: 1.4rem;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  color: #444;
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+}
+
+.legal-container p {
+  margin-bottom: 15px;
+}
+
+.legal-container ul {
+  margin: 10px 0 20px 20px;
+  padding-left: 20px;
+}
+
+.legal-container li {
+  margin-bottom: 8px;
+}
+
+.legal-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.legal-container a:hover {
+  text-decoration: underline;
+}
