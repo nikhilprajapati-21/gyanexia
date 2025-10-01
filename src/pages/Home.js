@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
+import { useNavigate } from "react-router-dom"; // ✅ For navigation
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   // ✅ Slider state
-  const images = ["/Result1.jpg", "/Result2.jpg", "/Result5.jpg", "Result9.jpg"];
+  const images = ["/Result1.jpg", "/Result2.jpg", "/Result5.jpg", "/Result9.jpg"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -52,15 +54,7 @@ const Home = () => {
             <div className="marquee-container">
               <div className="marquee-content">
                 <span>
-                  🚀 Registration is now open for "Gyanotsav 2.0" Competition 
-                </span>
-                <span>Enroll now!! 23% Off🎯</span>
-                <span>
                   🚀 Registration is now open for "Gyanotsav 2.0" Competition
-                </span>
-                <span>Enroll now!! 23% Off🎯</span>
-                <span>
-                  🚀 Registration is now open for "Gyanotsav 2.0" Competition 
                 </span>
                 <span>Enroll now!! 23% Off🎯</span>
                 <span>
@@ -69,13 +63,20 @@ const Home = () => {
                 <span>Enroll now!! 23% Off🎯</span>
               </div>
             </div>
+
+            {/* ✅ Register Now Button under marquee */}
+            <button
+              className="register-btn-home"
+              onClick={() => navigate("/competitions")}
+            >
+             Click Here to Register
+            </button>
           </div>
         </div>
       </section>
 
       {/* ✅ Slider Section with Heading */}
       <section className="slider-section">
-        
         <div className="slider-container">
           <button className="slider-btn prev" onClick={handlePrev}>
             &#10094;
@@ -132,9 +133,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      
-      
     </div>
   );
 };
