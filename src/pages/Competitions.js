@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import "./Competitions.css";
-import { db } from "../firebase"; // ✅ Firestore instance
+import { db } from "../firebase"; // Firestore instance
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 
-export default function UpcomingCompetitions() {
+export default function Competitions() {
   const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [showQR, setShowQR] = useState(false); // 🔹 Toggle QR popup
-  const [receipt, setReceipt] = useState(null); // 🔹 Uploaded receipt
+  const [showQR, setShowQR] = useState(false);
+  const [receipt, setReceipt] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
     fatherName: "",
+    phone: "",
     studentClass: "",
     stream: "",
+    collegeName: "", // ✅ New field
     address: "",
     medium: "",
     extraSubject: "",
   });
 
-  const [docId, setDocId] = useState(null); // 🔹 Store Firestore doc ID
+  const [docId, setDocId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // 🔹 Save registration to Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -36,7 +37,6 @@ export default function UpcomingCompetitions() {
         timestamp: new Date(),
       });
       setDocId(docRef.id);
-      console.log("Form Submitted & Saved:", formData);
       setFormSubmitted(true);
     } catch (error) {
       console.error("Error saving data:", error);
@@ -44,57 +44,42 @@ export default function UpcomingCompetitions() {
     }
   };
 
-  // 🔹 Handle receipt upload
   const handleReceiptUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setReceipt(file);
-    }
+    if (file) setReceipt(file);
   };
 
-  // 🔹 Confirm payment after receipt upload
   const handleConfirmPayment = async () => {
     if (!receipt) {
       alert("⚠️ Please upload your payment receipt before confirming!");
       return;
     }
-
     if (docId) {
       try {
         await updateDoc(doc(db, "registrations", docId), {
           paymentStatus: "Receipt Uploaded",
         });
-        console.log("✅ Receipt uploaded for:", docId);
         alert("✅ Receipt uploaded successfully! We will verify your payment.");
       } catch (error) {
         console.error("Error updating payment status:", error);
       }
     }
-
     setShowForm(false);
     setFormSubmitted(false);
     setShowQR(false);
     setReceipt(null);
   };
 
-  // 🔹 Function to get subjects list dynamically
   const getSubjects = () => {
     const { studentClass, stream, extraSubject } = formData;
     let subjects = [];
-
     if (["11", "12"].includes(studentClass)) {
       subjects = ["Science (Physics + Chemistry)", "Logical Questions"];
-      if (stream) {
-        subjects.push(stream); // Maths or Biology
-      }
+      if (stream) subjects.push(stream);
     } else {
       subjects = ["Maths", "Science", "Logical Questions"];
     }
-
-    if (extraSubject) {
-      subjects.push(extraSubject);
-    }
-
+    if (extraSubject) subjects.push(extraSubject);
     return subjects;
   };
 
@@ -102,25 +87,20 @@ export default function UpcomingCompetitions() {
     <div className="upcoming-container">
       <h1 className="title">Upcoming Competitions</h1>
 
-      {/* Competition Card */}
       <div className="competition-card">
         <h2 className="competition-name">Gyanotsav 2.0</h2>
         <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
         <p><strong>Exam Date:</strong> 14 December 2025</p>
         <p><strong>Exam Mode:</strong> Offline</p>
-        <p><strong>Medium:</strong> Both Hindi and English (As per your choice)</p>
+        <p><strong>Medium:</strong> Both Hindi and English</p>
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
           <h2>23% Off!!</h2>
         </p>
-
-        <button className="register-btn" onClick={() => setShowForm(true)}>
-          Register Now
-        </button>
+        <button className="register-btn" onClick={() => setShowForm(true)}>Register Now</button>
       </div>
 
-      {/* Sample Papers Card */}
       <div className="competition-card">
         <h2 className="competition-name">Sample Papers for Gyanotsav 2.0</h2>
         <p>Will be available soon!!</p>
@@ -134,7 +114,6 @@ export default function UpcomingCompetitions() {
         </a>
       </div>
 
-      {/* Registration Form Modal */}
       {showForm && (
         <div className="form-overlay">
           <div className="form-container">
@@ -143,7 +122,7 @@ export default function UpcomingCompetitions() {
 
             {!formSubmitted ? (
               <form onSubmit={handleSubmit}>
-                {/* Row 1: Name + Father's Name */}
+                {/* Row 1: Name + Father's Name + Phone */}
                 <div className="form-row">
                   <div className="form-group">
                     <label>Name:</label>
@@ -165,6 +144,18 @@ export default function UpcomingCompetitions() {
                       required
                     />
                   </div>
+                  <div className="form-group">
+                    <label>Phone Number:</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="9876543210"
+                      pattern="[0-9]{10}"
+                      required
+                    />
+                  </div>
                 </div>
 
                 {/* Row 2: Class + Stream */}
@@ -178,17 +169,15 @@ export default function UpcomingCompetitions() {
                       required
                     >
                       <option value="">Select Class</option>
-                      {[5, 6, 7, 8, 9, 10, 11, 12].map((grade) => (
-                        <option key={grade} value={grade}>
-                          {grade}
-                        </option>
+                      {[5,6,7,8,9,10,11,12].map((grade) => (
+                        <option key={grade} value={grade}>{grade}</option>
                       ))}
                     </select>
                   </div>
 
-                  {["11", "12"].includes(formData.studentClass) && (
+                  {["11","12"].includes(formData.studentClass) && (
                     <div className="form-group">
-                      <label>Stream (Choose one):</label>
+                      <label>Stream:</label>
                       <select
                         name="stream"
                         value={formData.stream}
@@ -201,6 +190,20 @@ export default function UpcomingCompetitions() {
                       </select>
                     </div>
                   )}
+                </div>
+
+                {/* ✅ New Field: College/School/Coaching Name */}
+                <div className="form-row">
+                  <div className="form-group" style={{ flex: "1 1 100%" }}>
+                    <label>College / School / Coaching Name:</label>
+                    <input
+                      type="text"
+                      name="collegeName"
+                      value={formData.collegeName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
                 </div>
 
                 {/* Address */}
@@ -232,7 +235,7 @@ export default function UpcomingCompetitions() {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label>Choose Extra Subject:</label>
+                    <label>Extra Subject:</label>
                     <select
                       name="extraSubject"
                       value={formData.extraSubject}
@@ -256,7 +259,7 @@ export default function UpcomingCompetitions() {
                   </ul>
                 </div>
 
-                {/* Buttons */}
+                {/* Form Buttons */}
                 <div className="form-buttons">
                   <button type="submit" className="submit-btn">Submit</button>
                   <button
@@ -272,32 +275,21 @@ export default function UpcomingCompetitions() {
               <div className="payment-section">
                 <h3>✅ Registration Successful!</h3>
                 <p>Please proceed with payment to complete your registration.</p>
-                <button className="pay-btn" onClick={() => setShowQR(true)}>
-                  Pay Now
-                </button>
+                <button className="pay-btn" onClick={() => setShowQR(true)}>Pay Now</button>
 
-                {/* QR Modal */}
                 {showQR && (
                   <div className="qr-overlay">
                     <div className="qr-container">
                       <h3>Scan & Pay</h3>
-                      {/* 🔹 Replace qr.png with your QR code image */}
                       <img src="/qr.jpg" alt="QR Code" className="qr-image" />
-
-                      {/* Upload Receipt */}
                       <div className="upload-box">
                         <label>Upload Payment Receipt:</label>
                         <input type="file" accept="image/*" onChange={handleReceiptUpload} />
                         {receipt && <p className="file-name">📂 {receipt.name}</p>}
                       </div>
-
                       <div className="qr-buttons">
-                        <button className="confirm-btn" onClick={handleConfirmPayment}>
-                          Confirm Payment
-                        </button>
-                        <button className="cancel-btn" onClick={() => setShowQR(false)}>
-                          Close
-                        </button>
+                        <button className="confirm-btn" onClick={handleConfirmPayment}>Confirm Payment</button>
+                        <button className="cancel-btn" onClick={() => setShowQR(false)}>Close</button>
                       </div>
                     </div>
                   </div>
