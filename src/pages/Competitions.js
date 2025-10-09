@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import "./Competitions.css";
 import { db } from "../firebase"; // Firestore instance
 import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export default function Competitions() {
   const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [showQR, setShowQR] = useState(false);
-  const [receipt, setReceipt] = useState(null);
-
   const [formData, setFormData] = useState({
     name: "",
     fatherName: "",
@@ -21,6 +19,9 @@ export default function Competitions() {
     extraSubject: "",
   });
 
+  const [docId, setDocId] = useState(null);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -29,11 +30,12 @@ export default function Competitions() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "registrations"), {
+      const docRef = await addDoc(collection(db, "registrations"), {
         ...formData,
         paymentStatus: "Pending",
         timestamp: new Date(),
       });
+      setDocId(docRef.id);
       setFormSubmitted(true);
     } catch (error) {
       console.error("Error saving data:", error);
@@ -41,25 +43,33 @@ export default function Competitions() {
     }
   };
 
-  const handleReceiptUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setReceipt(file);
-  };
-
-  const handleConfirmPayment = () => {
-    if (!receipt) {
-      alert("⚠️ Please upload your payment receipt before confirming!");
+  const handlePayNow = () => {
+    if (!docId) {
+      alert("❌ Please submit the registration form first.");
       return;
     }
 
-    alert("✅ Your registration has been submitted successfully!\nYou will receive a confirmation once our team verifies your details.");
+    const options = {
+      key: "rzp_live_RRMSCudaaURitm", // Replace with your Razorpay key
+      amount: 7000, // ₹70 in paise
+      currency: "INR",
+      name: "Gyanotsav 2.0",
+      description: "Registration Fee",
+      handler: function (response) {
+        // Payment successful callback
+        navigate("/registration-success");
+      },
+      prefill: {
+        name: formData.name,
+        contact: formData.phone,
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
-
-    // Reset UI
-    setShowForm(false);
-    setFormSubmitted(false);
-    setShowQR(false);
-    setReceipt(null);
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
   const getSubjects = () => {
@@ -81,21 +91,11 @@ export default function Competitions() {
 
       <div className="competition-card">
         <h2 className="competition-name">Gyanotsav 2.0</h2>
-        <p>
-          <strong>Eligibility:</strong> Grade 5th to 12th
-        </p>
-        <p>
-          <strong>Exam Date:</strong> 14 December 2025
-        </p>
-        <p>
-          <strong>Exam Mode:</strong> Offline
-        </p>
-        <p>
-          <strong>Medium:</strong> Both Hindi and English
-        </p>
-        <p>
-          <strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English
-        </p>
+        <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
+        <p><strong>Exam Date:</strong> 14 December 2025</p>
+        <p><strong>Exam Mode:</strong> Offline</p>
+        <p><strong>Medium:</strong> Both Hindi and English</p>
+        <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
           <h2>23% Off!!</h2>
@@ -173,15 +173,13 @@ export default function Competitions() {
                       required
                     >
                       <option value="">Select Class</option>
-                      {[5, 6, 7, 8, 9, 10, 11, 12].map((grade) => (
-                        <option key={grade} value={grade}>
-                          {grade}
-                        </option>
+                      {[5,6,7,8,9,10,11,12].map((grade) => (
+                        <option key={grade} value={grade}>{grade}</option>
                       ))}
                     </select>
                   </div>
 
-                  {["11", "12"].includes(formData.studentClass) && (
+                  {["11","12"].includes(formData.studentClass) && (
                     <div className="form-group">
                       <label>Stream:</label>
                       <select
@@ -198,7 +196,7 @@ export default function Competitions() {
                   )}
                 </div>
 
-                {/* College/School/Coaching Name */}
+                {/* College / School / Coaching Name */}
                 <div className="form-row">
                   <div className="form-group" style={{ flex: "1 1 100%" }}>
                     <label>College / School / Coaching Name:</label>
@@ -257,9 +255,7 @@ export default function Competitions() {
 
                 {/* Subjects Preview */}
                 <div className="subjects-box">
-                  <p>
-                    <strong>Your Subjects:</strong>
-                  </p>
+                  <p><strong>Your Subjects:</strong></p>
                   <ul>
                     {getSubjects().map((subj, idx) => (
                       <li key={idx}>{subj}</li>
@@ -269,9 +265,7 @@ export default function Competitions() {
 
                 {/* Buttons */}
                 <div className="form-buttons">
-                  <button type="submit" className="submit-btn">
-                    Submit
-                  </button>
+                  <button type="submit" className="submit-btn">Submit</button>
                   <button
                     type="button"
                     className="cancel-btn"
@@ -283,45 +277,22 @@ export default function Competitions() {
               </form>
             ) : (
               <div className="payment-section">
-                <h3>Please proceed with payment to complete your registration.</h3>
+                <h3>Proceed with payment to complete your registration!!</h3>
                 
-                <button className="pay-btn" onClick={() => setShowQR(true)}>
+                <button
+                  className="pay-btn"
+                  onClick={handlePayNow}
+                >
                   Pay Now
                 </button>
-
-                {showQR && (
-                  <div className="qr-overlay">
-                    <div className="qr-container">
-                      <h3>Scan & Pay</h3>
-                      <img src="/qr.jpg" alt="QR Code" className="qr-image" />
-                      <div className="upload-box">
-                        <label>Upload Payment Receipt:</label>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleReceiptUpload}
-                        />
-                        {receipt && (
-                          <p className="file-name">📂 {receipt.name}</p>
-                        )}
-                      </div>
-                      <div className="qr-buttons">
-                        <button
-                          className="confirm-btn"
-                          onClick={handleConfirmPayment}
-                        >
-                          Confirm Payment
-                        </button>
-                        <button
-                          className="cancel-btn"
-                          onClick={() => setShowQR(false)}
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <div className="form-buttons" style={{ marginTop: "20px" }}>
+                  <button
+                    className="cancel-btn"
+                    onClick={() => setShowForm(false)}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             )}
           </div>

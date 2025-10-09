@@ -7,7 +7,10 @@ import PreviousResults from "./pages/PreviousResults";
 import ContactUs from "./pages/ContactUs";
 import Sponsors from "./pages/Sponsors";
 
-// ✅ Import new legal pages
+// New Success Page
+import RegistrationSuccess from "./pages/RegistrationSuccess";
+
+// Legal Pages
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Refund from "./pages/Refund";
@@ -24,10 +27,13 @@ function App() {
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/contact" element={<ContactUs />} />
 
-          {/* ✅ Legal Pages */}
+          {/* Legal Pages */}
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund" element={<Refund />} />
+
+          {/* ✅ Registration Success Page */}
+          <Route path="/registration-success" element={<RegistrationSuccess />} />
         </Routes>
       </Layout>
     </Router>
