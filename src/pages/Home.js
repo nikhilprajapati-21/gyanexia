@@ -61,6 +61,10 @@ const Home = () => {
                   🚀 Registration is now open for "Gyanotsav 2.0" Competition
                 </span>
                 <span>Enroll now!! 23% Off🎯</span>
+                 <span>
+                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
+                </span>
+                <span>Enroll now!! 23% Off🎯</span>
               </div>
             </div>
 

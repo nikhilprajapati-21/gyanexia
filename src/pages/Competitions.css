@@ -182,6 +182,20 @@ textarea { resize: vertical; min-height: 60px; }
 }
 .cancel-btn:hover { background: #c82333; }
 
+.pay-btn{
+  height: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+}
+
 /* Payment QR */
 .qr-overlay {
   position: fixed;

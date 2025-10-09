@@ -94,7 +94,7 @@ export default function Competitions() {
         <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
         <p><strong>Exam Date:</strong> 14 December 2025</p>
         <p><strong>Exam Mode:</strong> Offline</p>
-        <p><strong>Medium:</strong> Both Hindi and English</p>
+        <p><strong>Medium:</strong> Both Hindi and English(As per your choice)</p>
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
