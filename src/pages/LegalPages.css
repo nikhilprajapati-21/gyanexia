@@ -1,49 +1,98 @@
 .legal-container {
   max-width: 900px;
-  margin: 80px auto; /* add spacing below navbar */
+  margin: 80px auto; /* spacing below navbar */
   padding: 30px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.7;
+  line-height: 1.8;
   color: #333;
+  transition: all 0.3s ease-in-out;
 }
 
+/* Headings */
 .legal-container h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #222;
+  margin-bottom: 25px;
+  color: #111;
   text-align: center;
+  font-weight: 700;
 }
 
-.legal-container h2 {
+.legal-container h2,
+.legal-container h3 {
   font-size: 1.4rem;
-  margin-top: 25px;
-  margin-bottom: 12px;
-  color: #444;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #333;
   border-left: 4px solid #007bff;
   padding-left: 10px;
+  font-weight: 600;
 }
 
+/* Paragraphs and lists */
 .legal-container p {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  text-align: justify;
 }
 
 .legal-container ul {
-  margin: 10px 0 20px 20px;
-  padding-left: 20px;
+  margin: 10px 0 20px 40px;
+  padding-left: 10px;
 }
 
 .legal-container li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
+/* Links */
 .legal-container a {
   color: #007bff;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .legal-container a:hover {
   text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .legal-container {
+    margin: 60px 15px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .legal-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .legal-container h2,
+  .legal-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .legal-container p,
+  .legal-container li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-container {
+    padding: 15px;
+  }
+
+  .legal-container h1 {
+    font-size: 1.4rem;
+  }
+
+  .legal-container p {
+    font-size: 0.9rem;
+  }
 }

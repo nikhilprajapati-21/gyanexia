@@ -12,11 +12,13 @@ const About = () => {
 
       <div className="about-content">
         <p>
-          At Gyanexia, we believe that every student deserves access to quality 
-          education, no matter their background. Education is the key to opening
-           doors of opportunity, and we are committed to making learning affordable
-            and accessible for all. Our platform is designed to support underprivileged 
-            students by providing them with the knowledge, resources, and guidance they need to succeed.
+          At Gyanexia, we believe that every student deserves access to quality education, regardless of their background.
+Education opens doors to endless opportunities, and we are committed to making learning engaging, affordable, and accessible for all.
+Through our academic competitions, quizzes, and learning programs, we aim to motivate students to study, explore their potential, and develop a lifelong passion for learning.
+
+We especially focus on supporting underprivileged students by providing them with affordable access to educational opportunities, mentorship, and guidance.
+Our initiatives are designed to bridge the educational gap and ensure that no student is left behind due to financial or social barriers.
+Together, we strive to build a community where knowledge empowers every learner to achieve their dreams
         </p>
         <p>
           Our goal is to bridge the gap between knowledge and opportunity by

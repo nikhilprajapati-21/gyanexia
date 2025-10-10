@@ -6,65 +6,79 @@ const Terms = () => {
   return (
     <div className="legal-container">
       <h1>Terms and Conditions</h1>
-      <p><strong>Effective Date:</strong> 01/05/2025</p>
+      <p><strong>Effective Date:</strong> 01/10/2025</p>
+
       <p>
-        Welcome to <a href="https://www.gyanexia.in/">www.gyanexia.in</a>
-        (“we”, “us”, “our”). By accessing or using the website and purchasing our products,
-        you agree to the following terms and conditions, which comply with Indian law,
-        including the Sale of Goods Act, 1930, and the Consumer Protection Act, 2019.
+        Welcome to <a href="https://www.gyanexia.in/">www.gyanexia.in</a> (“we”, “us”, “our”). 
+        By accessing or using our website, registering for events, or making a payment, 
+        you agree to comply with and be bound by these Terms and Conditions. 
+        These terms are governed by applicable Indian laws, including the Information Technology Act, 2000, 
+        and the Consumer Protection Act, 2019.
       </p>
 
-      <h3>1. Parties</h3>
+      <h3>1. About Gyanexia</h3>
       <p>
-        This agreement is between Gyanexia, registered at HNO 105 Sopodera Sarjamda - New Shiv Mandir,
-        and you, the customer.
+        Gyanexia is an educational initiative aimed at promoting academic excellence, innovation, and learning opportunities 
+        for students from Classes 5th to 12th through competitions, programs, and events conducted online and offline.
       </p>
 
-      <h3>2. Offer and Acceptance</h3>
+      <h3>2. Registration and Participation</h3>
       <ul>
-        <li>All orders placed on the Site constitute an offer to purchase.</li>
-        <li>Acceptance occurs when we send you an order confirmation email.</li>
+        <li>Participants must provide accurate personal and academic information during registration.</li>
+        <li>Registrations are considered confirmed only after successful payment and verification by the Gyanexia team.</li>
+        <li>Any misuse, false information, or misconduct may lead to disqualification without refund.</li>
       </ul>
 
-      <h3>3. Price and Payment</h3>
+      <h3>3. Payments</h3>
       <ul>
-        <li>All prices are in INR and include applicable taxes unless otherwise stated.</li>
-        <li>Payment methods include credit/debit card, UPI, net banking, and others as shown at checkout.</li>
-        <li>We reserve the right to correct pricing errors and cancel orders with incorrect pricing.</li>
+        <li>All payments are accepted through secure online gateways as listed on our website.</li>
+        <li>Fees once paid are non-transferable and subject to our <a href="/refund">Refund Policy</a>.</li>
+        <li>Payment confirmation will be sent to your registered email after successful transaction.</li>
       </ul>
 
-      <h3>4. Delivery</h3>
+      <h3>4. Use of Website</h3>
+      <ul>
+        <li>You agree not to misuse the website for any unlawful activities or to disrupt its functionality.</li>
+        <li>All content including text, images, graphics, and materials belong to Gyanexia and may not be copied or redistributed without permission.</li>
+      </ul>
+
+      <h3>5. Privacy and Data Protection</h3>
       <p>
-        Delivery may be via our logistics partners, post, courier, or customer pickup, as selected at checkout.
-        Estimated delivery times are provided; delays due to unforeseen circumstances are not our liability.
-        Risk transfers to you upon delivery.
+        We value your privacy. Personal data collected during registration or website use is processed in accordance with our 
+        <a href="/privacy"> Privacy Policy</a>. 
+        Gyanexia ensures reasonable security measures to protect your information.
       </p>
 
-      <h3>5. Returns and Cancellations</h3>
-      <p>Returns, refunds, and cancellations are governed by our Refund & Return Policy.</p>
-
-      <h3>6. Consumer Protection</h3>
+      <h3>6. Certificates, Results, and Recognition</h3>
       <p>
-        You are entitled to statutory rights under Indian law, including the right to return defective goods
-        and receive a refund or replacement.
+        Certificates or recognition will be issued based on merit and participation. 
+        Gyanexia reserves the right to review or withhold certificates in case of any irregularity or rule violation.
       </p>
 
-      <h3>7. Intellectual Property</h3>
+      <h3>7. Limitation of Liability</h3>
       <p>
-        All content on the Site is owned by NIKHIL KUMAR and may not be reproduced without permission.
+        Gyanexia is not liable for any indirect, incidental, or consequential damages arising from the use of our platform or participation in events. 
+        Our liability, if any, shall not exceed the total fee paid for registration.
       </p>
 
-      <h3>8. Limitation of Liability</h3>
+      <h3>8. Intellectual Property</h3>
       <p>
-        Our liability is limited to the purchase price of the product.
-        We are not liable for indirect or consequential damages.
+        All materials, designs, content, and logos on the Gyanexia website are the intellectual property of Nikhil Kumar (Founder, Gyanexia) 
+        and are protected under applicable copyright laws.
       </p>
 
       <h3>9. Dispute Resolution</h3>
-      <p>Disputes are subject to the jurisdiction of courts in Hardoi, India.</p>
+      <p>
+        In the event of a dispute, parties shall first attempt an amicable resolution. 
+        If unresolved, disputes are subject to the exclusive jurisdiction of courts in Hardoi, Uttar Pradesh, India.
+      </p>
 
-      <h3>10. Amendments</h3>
-      <p>We may update these terms at any time. Changes will be posted on this page.</p>
+      <h3>10. Updates to Terms</h3>
+      <p>
+        We may modify these Terms and Conditions periodically. 
+        Updated versions will be posted on this page with the revised effective date. 
+        Continued use of our services implies acceptance of the updated terms.
+      </p>
     </div>
   );
 };

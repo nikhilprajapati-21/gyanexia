@@ -14,6 +14,7 @@ import RegistrationSuccess from "./pages/RegistrationSuccess";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Refund from "./pages/Refund";
+import Disclaimer from "./pages/Disclaimer"; // ✅ Imported Disclaimer page
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund" element={<Refund />} />
+          <Route path="/disclaimer" element={<Disclaimer />} /> {/* ✅ Added new route */}
 
           {/* ✅ Registration Success Page */}
           <Route path="/registration-success" element={<RegistrationSuccess />} />
