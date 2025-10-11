@@ -56,7 +56,6 @@ export default function Competitions() {
       name: "Gyanotsav 2.0",
       description: "Registration Fee",
       handler: function (response) {
-        // Payment successful callback
         navigate("/registration-success");
       },
       prefill: {
@@ -89,12 +88,13 @@ export default function Competitions() {
     <div className="upcoming-container">
       <h1 className="title">Upcoming Competitions</h1>
 
+      {/* --- Gyanotsav Card --- */}
       <div className="competition-card">
         <h2 className="competition-name">Gyanotsav 2.0</h2>
         <p><strong>Eligibility:</strong> Grade 5th to 12th</p>
         <p><strong>Exam Date:</strong> 14 December 2025</p>
         <p><strong>Exam Mode:</strong> Offline</p>
-        <p><strong>Medium:</strong> Both Hindi and English(As per your choice)</p>
+        <p><strong>Medium:</strong> Both Hindi and English (As per your choice)</p>
         <p><strong>Subjects:</strong> Maths + Science + Reasoning + Hindi/English</p>
         <p className="registration-text">
           <strong>🎉 Registration is open – Enroll Now!! 🎯</strong>
@@ -105,6 +105,7 @@ export default function Competitions() {
         </button>
       </div>
 
+      {/* --- Sample Papers Card --- */}
       <div className="competition-card">
         <h2 className="competition-name">Sample Papers for Gyanotsav 2.0</h2>
         <p>Will be available soon!!</p>
@@ -118,6 +119,31 @@ export default function Competitions() {
         </a>
       </div>
 
+      {/* --- New Syllabus Card --- */}
+      <div className="competition-card syllabus-card">
+        <h2 className="competition-name">📘 Syllabus – Gyanotsav 2.0</h2>
+        <p><strong>Exam will be conducted according to your class syllabus— so prepare confidently!</strong></p>
+        
+        <p><strong>For Classes 5th to 10th:</strong></p>
+        
+        <ul>
+          <li>Mathematics – Based on NCERT syllabus</li>
+          <li>Science – Physics, Chemistry, and Biology from NCERT concepts.</li>
+          <li>Reasoning – Questions to test your IQ and logic.</li>
+          <li>Extra Subject – Hindi or English (Grammar based questions)</li>
+        </ul>
+        <hr />
+        <p><strong>For Classes 11th and 12th:</strong></p>
+        <ul>
+          <li>Physics & Chemistry – Based on NCERT Syllabus</li>
+          <li>Mathematics/Biology – As per chosen stream(Based on NCERT).</li>
+          <li>Logical Reasoning – Analytical and aptitude-based questions.</li>
+          <li>Extra Subject – Hindi or English(Grammar based questions)</li>
+        </ul>
+        <p><em>✨ Note: Syllabus aligns with NCERT pattern and focuses on conceptual understanding and reasoning ability.</em></p>
+      </div>
+
+      {/* --- Registration Form --- */}
       {showForm && (
         <div className="form-overlay">
           <div className="form-container">
@@ -126,7 +152,6 @@ export default function Competitions() {
 
             {!formSubmitted ? (
               <form onSubmit={handleSubmit}>
-                {/* Row 1: Name + Father's Name + Phone */}
                 <div className="form-row">
                   <div className="form-group">
                     <label>Name:</label>
@@ -162,7 +187,6 @@ export default function Competitions() {
                   </div>
                 </div>
 
-                {/* Row 2: Class + Stream */}
                 <div className="form-row">
                   <div className="form-group">
                     <label>Class:</label>
@@ -196,7 +220,6 @@ export default function Competitions() {
                   )}
                 </div>
 
-                {/* College / School / Coaching Name */}
                 <div className="form-row">
                   <div className="form-group" style={{ flex: "1 1 100%" }}>
                     <label>College / School / Coaching Name:</label>
@@ -210,7 +233,6 @@ export default function Competitions() {
                   </div>
                 </div>
 
-                {/* Address */}
                 <div className="form-row">
                   <div className="form-group" style={{ flex: "1 1 100%" }}>
                     <label>Address:</label>
@@ -223,7 +245,6 @@ export default function Competitions() {
                   </div>
                 </div>
 
-                {/* Medium + Extra Subject */}
                 <div className="form-row">
                   <div className="form-group">
                     <label>Medium:</label>
@@ -253,7 +274,6 @@ export default function Competitions() {
                   </div>
                 </div>
 
-                {/* Subjects Preview */}
                 <div className="subjects-box">
                   <p><strong>Your Subjects:</strong></p>
                   <ul>
@@ -263,7 +283,6 @@ export default function Competitions() {
                   </ul>
                 </div>
 
-                {/* Buttons */}
                 <div className="form-buttons">
                   <button type="submit" className="submit-btn">Submit</button>
                   <button
@@ -278,11 +297,7 @@ export default function Competitions() {
             ) : (
               <div className="payment-section">
                 <h3>Proceed with payment to complete your registration!!</h3>
-                
-                <button
-                  className="pay-btn"
-                  onClick={handlePayNow}
-                >
+                <button className="pay-btn" onClick={handlePayNow}>
                   Pay Now
                 </button>
                 <div className="form-buttons" style={{ marginTop: "20px" }}>

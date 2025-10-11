@@ -34,7 +34,7 @@ const Refund = () => {
       <h3>4. Contact for Refund</h3>
       <p>
         For refund-related queries, please contact us at{" "}
-        <a href="mailto:prajapati09297@gmail.com">prajapati09297@gmail.com</a>{" "}
+        <a href="mailto:gyanexia@gmail.com">gyanexia@gmail.com</a>{" "}
         or call us at <strong>+91 8840284749</strong>.
       </p>
 

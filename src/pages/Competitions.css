@@ -17,7 +17,7 @@
   background: white;
   border-radius: 15px;
   padding: 25px 40px;
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
   margin-bottom: 25px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -73,6 +73,27 @@ p {
 
 .download-btn:hover { background: #1e7e34; }
 
+/* Syllabus Card */
+.syllabus-card {
+  text-align: left;
+  line-height: 1.6;
+}
+
+.syllabus-card ul {
+  text-align: left;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.syllabus-card li {
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.syllabus-card em {
+  color: #555;
+}
+
 /* Overlay */
 .form-overlay {
   position: fixed;
@@ -103,7 +124,6 @@ p {
 
 .form-container h2 { margin-bottom: 20px; text-align: center; }
 
-/* Keep same styles as before */
 .form-row {
   display: flex;
   gap: 20px;
@@ -132,16 +152,7 @@ p {
   font-size: 1rem;
 }
 
-
 textarea { resize: vertical; min-height: 60px; }
-
-/* Error */
-.error-text {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 4px;
-  display: block;
-}
 
 /* Subjects Preview */
 .subjects-box {
@@ -182,8 +193,8 @@ textarea { resize: vertical; min-height: 60px; }
 }
 .cancel-btn:hover { background: #c82333; }
 
-.pay-btn{
-  height: 30px;
+.pay-btn {
+  height: 40px;
   font-size: 1rem;
   font-weight: 500;
   background: #007bff;
@@ -193,68 +204,11 @@ textarea { resize: vertical; min-height: 60px; }
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   transition: 0.3s;
-
 }
+.pay-btn:hover { background: #0056b3; }
 
-/* Payment QR */
-.qr-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3000;
-}
-
-.qr-container {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-}
-
-.qr-container h3 { margin-bottom: 15px; }
-
-.qr-image {
-  width: 250px;
-  height: auto;
-  margin: 15px 0;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-}
-
-/* Upload */
-.upload-box { margin: 15px 0; text-align: left; }
-.upload-box label { font-weight: bold; display: block; margin-bottom: 6px; }
-.file-name { font-size: 0.9rem; color: #333; margin-top: 6px; }
-
-/* QR Buttons */
-.qr-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.confirm-btn {
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.confirm-btn:hover { background: #218838; }
-
-/* Mobile */
 @media (max-width: 768px) {
   .form-container { width: 95%; padding: 20px; }
   .form-row { flex-direction: column; gap: 10px; }
-  .qr-image { width: 200px; }
+  .competition-card { padding: 20px; }
 }

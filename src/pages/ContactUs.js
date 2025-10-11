@@ -20,7 +20,7 @@ export default function ContactUs() {
         {/* ✉️ Email */}
         <div className="contact-item">
           <FaEnvelope className="contact-icon" />
-          <span className="contact-text">prajapati09297@gmail.com</span>
+          <span className="contact-text">gyanexia@gmail.com</span>
         </div>
 
         {/* 💬 WhatsApp */}

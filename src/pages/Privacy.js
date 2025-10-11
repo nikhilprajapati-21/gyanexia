@@ -72,7 +72,7 @@ const Privacy = () => {
         <li>Request deletion of your account or stored data</li>
       </ul>
       <p>
-        For such requests, please contact us at <strong>prajapati09297@gmail.com</strong>.
+        For such requests, please contact us at <strong>gyanexia@gmail.com</strong>.
       </p>
 
       <h3>6. Data Retention</h3>
@@ -91,7 +91,7 @@ const Privacy = () => {
         If you have any questions about this Privacy Policy, please contact us:
       </p>
       <ul>
-        <li><strong>Email:</strong> prajapati09297@gmail.com</li>
+        <li><strong>Email:</strong> gyanexia@gmail.com</li>
         <li><strong>Phone:</strong> +91 8840284749</li>
         
       </ul>
