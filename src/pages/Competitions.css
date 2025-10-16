@@ -212,3 +212,42 @@ textarea { resize: vertical; min-height: 60px; }
   .form-row { flex-direction: column; gap: 10px; }
   .competition-card { padding: 20px; }
 }
+/* Popup for download options */
+.download-popup {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+
+.download-popup h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.download-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 350px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.download-option {
+  display: block;
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.download-option:hover {
+  background: #1e7e34;
+}

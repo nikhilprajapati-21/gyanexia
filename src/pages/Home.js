@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   // ✅ Slider state
-  const images = ["/Result1.jpg", "/Result2.jpg", "/Result5.jpg", "/Result9.jpg"];
+  const images = ["/Result1.jpg", "/Result2.jpg", "/Result3.jpg", "/Result4.jpg", "/Result5.jpg"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -127,8 +127,7 @@ const Home = () => {
                       founder of Gyanexia.
                     </p>
                     <blockquote className="founder-quote">
-                      "Education is the most powerful weapon which you can use
-                      to change the world."
+                     “Talent is everywhere, but opportunity is not. We’re here to ensure every student gets a fair chance.”
                     </blockquote>
                   </div>
                 </div>
