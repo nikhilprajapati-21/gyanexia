@@ -1,6 +1,13 @@
 import React from "react";
 import "./ContactUs.css";
-import { FaPhoneAlt, FaEnvelope, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaInstagram,
+  FaWhatsapp,
+  FaYoutube,
+  FaTelegramPlane,
+} from "react-icons/fa";
 
 export default function ContactUs() {
   return (
@@ -46,6 +53,32 @@ export default function ContactUs() {
             className="contact-link"
           >
             @gyanexia_edu
+          </a>
+        </div>
+
+        {/* ▶️ YouTube */}
+        <div className="contact-item">
+          <FaYoutube className="contact-icon" style={{ color: "#FF0000" }} />
+          <a
+            href="https://www.youtube.com/@Gyanexia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            YouTube Channel
+          </a>
+        </div>
+
+        {/* 💬 Telegram */}
+        <div className="contact-item">
+          <FaTelegramPlane className="contact-icon" style={{ color: "#0088cc" }} />
+          <a
+            href="https://t.me/gyanexia_edu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            Telegram
           </a>
         </div>
       </div>
