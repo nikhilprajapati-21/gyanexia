@@ -22,19 +22,19 @@ export default function PreviousResults() {
       title: "🥇 1st Winner",
       name: "Abhikarsh",
       school: "NATIONAL PRATHAM ACADEMY, JB GANJ KHERI",
-      img: `${process.env.PUBLIC_URL}/G2_Winner1.jpg`,
+      img: `${process.env.PUBLIC_URL}/G2_Winner1.JPG`,
     },
     {
       title: "🥈 2nd Winner",
       name: "Sarthak Kumar",
       school: "NATIONAL PRATHAM ACADEMY, JB GANJ KHERI",
-      img: `${process.env.PUBLIC_URL}/G2_Winner2.jpg`,
+      img: `${process.env.PUBLIC_URL}/G2_Winner2.JPG`,
     },
     {
       title: "🥉 3rd Winner",
       name: "Aditya Shukla",
       school: "GSM MEMORIAL ACADEMY, BARKHERIA JAT, KHERI",
-      img: `${process.env.PUBLIC_URL}/G2_Winner3.jpg`,
+      img: `${process.env.PUBLIC_URL}/G2_Winner3.JPG`,
     },
   ];
 
