@@ -1,36 +1,44 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom"; // ✅ For navigation
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Slider state
-  const images = ["/Result1.jpg", "/Result2.jpg", "/Result3.jpg", "/Result4.jpg", "/Result5.jpg"];
+  // Slider state
+  const images = [
+    "/Result1.jpg",
+    "/Result2.jpg",
+    "/Result3.jpg",
+    "/Result4.jpeg",
+    "/Result5.jpg",
+    "/Result6.jpeg",
+    "/Result7.jpeg",
+    "/Result8.jpeg",
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  // Slider handlers
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    setCurrentIndex((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
     );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    setCurrentIndex((prev) =>
+      prev === images.length - 1 ? 0 : prev + 1
     );
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      setCurrentIndex((prev) =>
+        prev === images.length - 1 ? 0 : prev + 1
       );
     }, 5000);
     return () => clearInterval(interval);
@@ -45,6 +53,7 @@ const Home = () => {
             <h1 className="hero-title">
               Welcome to <span className="hero-highlight">Gyanexia</span>
             </h1>
+
             <p className="hero-description">
               Empowering minds through knowledge and innovation. Your journey to
               excellence starts here.
@@ -53,38 +62,25 @@ const Home = () => {
             {/* Scrolling Announcement */}
             <div className="marquee-container">
               <div className="marquee-content">
-                <span>
-                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
-                </span>
-                <span>Enroll now!! 23% Off🎯</span>
-                <span>
-                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
-                </span>
-                <span>Enroll now!! 23% Off🎯</span>
-                 <span>
-                  🚀 Registration is now open for "Gyanotsav 2.0" Competition
-                </span>
-                <span>Enroll now!! 23% Off🎯</span>
+                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
+                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
+                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
+                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
+                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
               </div>
             </div>
-
-            {/* ✅ Register Now Button under marquee */}
-            <button
-              className="register-btn-home"
-              onClick={() => navigate("/competitions")}
-            >
-             Click Here to Register
-            </button>
+            {/* ❌ Register button removed */}
           </div>
         </div>
       </section>
 
-      {/* ✅ Slider Section with Heading */}
+      {/* Slider Section */}
       <section className="slider-section">
         <div className="slider-container">
           <button className="slider-btn prev" onClick={handlePrev}>
             &#10094;
           </button>
+
           <div className="slider-image-container">
             <img
               src={images[currentIndex]}
@@ -92,6 +88,7 @@ const Home = () => {
               className="slider-image"
             />
           </div>
+
           <button className="slider-btn next" onClick={handleNext}>
             &#10095;
           </button>
@@ -114,10 +111,9 @@ const Home = () => {
             <div className="founder-card">
               <div className="founder-card-content">
                 <div className="founder-image-container">
-                  <div className="founder-image">
-                    <img className="founder-img" alt="Founder" />
-                  </div>
+                  <div className="founder-image"></div>
                 </div>
+
                 <div className="founder-details">
                   <div className="founder-info">
                     <h3 className="founder-name">Nikhil Prajapati</h3>
@@ -127,13 +123,15 @@ const Home = () => {
                       founder of Gyanexia.
                     </p>
                     <blockquote className="founder-quote">
-                     “Talent is everywhere, but opportunity is not. We’re here to ensure every student gets a fair chance.”
+                      “Talent is everywhere, but opportunity is not. We’re here to
+                      ensure every student gets a fair chance.”
                     </blockquote>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </div>

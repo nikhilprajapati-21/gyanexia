@@ -68,6 +68,12 @@
   font-size: 0.95rem;
   color: #555;
 }
+/* Highlight new competition winners */
+.winner-card.highlight {
+  border: 2px solid #ffc107;
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
 
 /* Gallery */
 .gallery-title {
@@ -107,4 +113,20 @@
   .winner-card {
     width: 90%;
   }
+}
+/* Section spacing between competitions */
+.results-subtitle {
+  margin-top: 50px;
+}
+
+/* Separate galleries visually */
+.gallery-title {
+  margin-top: 35px;
+}
+
+/* Optional: slightly different background for Gyanotsav 2.0 gallery */
+.gyanotsav2-gallery {
+  background-color: #fff8e1;
+  padding: 20px;
+  border-radius: 12px;
 }

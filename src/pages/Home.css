@@ -434,21 +434,4 @@ h2 {
 .slider-btn.next {
   right: 15px;
 }
-  /* Home Register Button */
-.register-btn-home {
-  margin-top: 20px;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.register-btn-home:hover {
-  background: linear-gradient(135deg, #1e40af, #1d4ed8);
-  transform: scale(1.05);
-}
+ 
