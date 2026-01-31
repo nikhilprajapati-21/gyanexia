@@ -1,65 +1,116 @@
 .contact-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 50px auto;
   padding: 30px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: "Arial", sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .contact-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.contact-subtitle {
-  font-size: 1.1rem;
-  color: #555;
+  text-align: center;
+  font-size: 2.3rem;
   margin-bottom: 30px;
 }
 
-.contact-card {
+/* Layout */
+.contact-sections {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 30px;
+}
+
+/* Contact details */
+.contact-details {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+.contact-details h2 {
+  margin-bottom: 20px;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
-  font-size: 1.2rem;
-  background: #f9f9f9;
-  padding: 12px 20px;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 
-.contact-item:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
-}
-
-.contact-icon {
-  font-size: 1.5rem;
-}
-
-.contact-text {
-  color: #333;
-}
-
-.contact-link {
+.contact-item a {
   text-decoration: none;
-  color: #0077b5; /* LinkedIn blue */
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
+  color: #0077b5;
 }
 
-.contact-link:hover {
-  color: #005582;
+.whatsapp {
+  color: #25d366;
+}
+
+.instagram {
+  color: #e1306c;
+}
+
+/* Form */
+.contact-form {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.textarea {
+  align-items: flex-start;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* ✅ BUTTON SCOPED (IMPORTANT FIX) */
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #0077b5;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #005582;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-sections {
+    flex-direction: column;
+  }
 }

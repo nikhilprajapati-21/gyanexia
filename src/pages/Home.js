@@ -6,6 +6,11 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
+  // 🔢 Counter states
+  const [students, setStudents] = useState(0);
+  const [events, setEvents] = useState(0);
+  const [competitions, setCompetitions] = useState(0);
+
   // Slider state
   const images = [
     "/Result1.jpg",
@@ -21,6 +26,22 @@ const Home = () => {
 
   useEffect(() => {
     setIsVisible(true);
+  }, []);
+
+  // 🔥 Counter animation
+  useEffect(() => {
+    const animate = (setter, target, speed) => {
+      let value = 0;
+      const interval = setInterval(() => {
+        value += 1;
+        setter(value);
+        if (value >= target) clearInterval(interval);
+      }, speed);
+    };
+
+    animate(setStudents, 160, 15);
+    animate(setEvents, 5, 50);
+    animate(setCompetitions, 2, 80);
   }, []);
 
   const handlePrev = () => {
@@ -46,6 +67,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
@@ -69,7 +91,6 @@ const Home = () => {
                 <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
               </div>
             </div>
-            {/* ❌ Register button removed */}
           </div>
         </div>
       </section>
@@ -134,6 +155,27 @@ const Home = () => {
 
         </div>
       </section>
+
+      {/* 🔵 FULL WIDTH COUNTING SECTION */}
+      <section className="stats-section">
+        <div className="stats-container">
+          <div className="stat-box">
+            <h2 className="stat-number">{students}+</h2>
+            <p className="stat-label">Students Participated 🧑‍🎓</p>
+          </div>
+
+          <div className="stat-box">
+            <h2 className="stat-number">{events}+</h2>
+            <p className="stat-label">Events Conducted 📅</p>
+          </div>
+
+          <div className="stat-box">
+            <h2 className="stat-number">{competitions}+</h2>
+            <p className="stat-label">Competitions Conducted 🏆</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
