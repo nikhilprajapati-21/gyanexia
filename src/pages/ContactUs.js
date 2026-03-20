@@ -157,7 +157,7 @@ New Query from Gyanexia Website 👇
             </div>
 
             {/* UX clarity */}
-            <button type="submit">Send</button>
+            <button type="submit">Send via WhatsApp</button>
           </form>
         </div>
       </div>
