@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import founderImg from "./founder-image.jpeg";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,7 +82,6 @@ const Home = () => {
               excellence starts here.
             </p>
 
-            {/* Scrolling Announcement */}
             <div className="marquee-container">
               <div className="marquee-content">
                 <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
@@ -131,8 +131,13 @@ const Home = () => {
           <div className="founder-card-container">
             <div className="founder-card">
               <div className="founder-card-content">
+
+                {/* ✅ FIXED IMAGE */}
                 <div className="founder-image-container">
-                  <div className="founder-image"></div>
+                  <div
+                    className="founder-image"
+                    style={{ backgroundImage: `url(${founderImg})` }}
+                  ></div>
                 </div>
 
                 <div className="founder-details">
@@ -149,6 +154,7 @@ const Home = () => {
                     </blockquote>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -156,7 +162,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 🔵 FULL WIDTH COUNTING SECTION */}
+      {/* Stats Section */}
       <section className="stats-section">
         <div className="stats-container">
           <div className="stat-box">
