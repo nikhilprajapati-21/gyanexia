@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
 import founderImg from "./founder-image.jpeg";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate();
 
   // 🔢 Counter states
   const [students, setStudents] = useState(0);
@@ -132,7 +130,6 @@ const Home = () => {
             <div className="founder-card">
               <div className="founder-card-content">
 
-                {/* ✅ FIXED IMAGE */}
                 <div className="founder-image-container">
                   <div
                     className="founder-image"

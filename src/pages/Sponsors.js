@@ -15,7 +15,8 @@ const Sponsors = () => {
       <p className="sponsors-subtitle">
         We are grateful to our amazing sponsors for their valuable support.
       </p>
-      {/* <div className="sponsors-grid">
+
+      <div className="sponsors-grid">
         {sponsors.map((sponsor) => (
           <div key={sponsor.id} className="sponsor-card">
             <img
@@ -26,7 +27,7 @@ const Sponsors = () => {
             <h3 className="sponsor-name">{sponsor.name}</h3>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
