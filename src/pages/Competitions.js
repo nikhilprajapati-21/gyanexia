@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Competitions.css";
 
 export default function Competitions() {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(true);
+  };
+
   return (
-    <div className="coming-soon-container">
-      <div className="coming-soon-card">
-        <h1 className="coming-soon-title">🚀 Coming Soon!</h1>
+    <div className="competition-container">
+      <div className="competition-card">
+        <h1 className="competition-title">🏆 Gyanexia Talent Hunt</h1>
 
-        <p className="coming-soon-text">
-          New activities and competitions are on the way.
+        <p className="competition-tagline">
+          Discover the Best Young Minds!
         </p>
 
-        <p className="coming-soon-highlight">
-          Stay tuned with <strong>Gyanexia</strong> for exciting updates, learning
-          challenges, and opportunities! 📚✨
+        <div className="competition-details">
+          <p>🎯 Classes: 5th – 12th</p>
+          <p>📍 Mode: Offline</p>
+          <p>📅 Exam Date: <strong>Coming Soon</strong></p>
+          <p>🏅 Prizes: Upto ₹2000</p>
+        </div>
+
+        <p className="competition-extra">
+          👉 Subjects and topics will be notified soon. Stay tuned for updates! 📚✨
         </p>
+
+        <button 
+          className={`notify-btn ${clicked ? "clicked" : ""}`} 
+          onClick={handleClick}
+        >
+          {clicked ? "You'll be notified! ✅" : "Get Notified"}
+        </button>
       </div>
     </div>
   );

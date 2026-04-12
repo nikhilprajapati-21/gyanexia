@@ -1,5 +1,5 @@
-/* Full Page Centered Layout */
-.coming-soon-container {
+/* Full Page Layout */
+.competition-container {
   min-height: 80vh;
   display: flex;
   justify-content: center;
@@ -7,10 +7,12 @@
   background: linear-gradient(135deg, #dbeafe, #e0e7ff);
   padding: 20px;
   font-family: Arial, sans-serif;
+
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Card */
-.coming-soon-card {
+.competition-card {
   background: white;
   padding: 50px 40px;
   border-radius: 16px;
@@ -18,37 +20,141 @@
   max-width: 600px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  animation: slideUp 0.8s ease-out;
+  transition: transform 0.3s ease;
+}
+
+/* Slight hover lift */
+.competition-card:hover {
+  transform: translateY(-8px);
 }
 
 /* Title */
-.coming-soon-title {
-  font-size: 2.5rem;
+.competition-title {
+  font-size: 2.3rem;
   font-weight: bold;
   color: #2563eb;
+  margin-bottom: 10px;
+
+  animation: fadeInDown 1s ease;
+}
+
+/* Tagline */
+.competition-tagline {
+  font-size: 1.2rem;
+  color: #6b7280;
   margin-bottom: 20px;
+  font-style: italic;
+
+  animation: fadeIn 1.2s ease;
 }
 
-/* Text */
-.coming-soon-text {
-  font-size: 1.3rem;
-  color: #374151;
-  margin-bottom: 15px;
-}
-
-/* Highlight */
-.coming-soon-highlight {
+/* Details */
+.competition-details p {
   font-size: 1.1rem;
+  color: #374151;
+  margin: 8px 0;
+
+  animation: fadeIn 1.4s ease;
+}
+
+/* Extra Info */
+.competition-extra {
+  margin-top: 20px;
+  font-size: 1rem;
   color: #4b5563;
   line-height: 1.6;
+
+  animation: fadeIn 1.6s ease;
+}
+
+/* Button */
+.notify-btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  animation: pulse 2s infinite;
+  transition: 0.3s ease;
+}
+
+.notify-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.08);
+}
+
+/* ---------------- Animations ---------------- */
+
+/* Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Up */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade Down (for title) */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Pulse Button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .coming-soon-title {
-    font-size: 2rem;
+  .competition-title {
+    font-size: 1.8rem;
   }
 
-  .coming-soon-card {
+  .competition-card {
     padding: 35px 25px;
   }
+}
+/* Button clicked state */
+.notify-btn.clicked {
+  background: #16a34a; /* green */
+  animation: none;
+}
+
+.notify-btn.clicked:hover {
+  transform: none;
+  background: #16a34a;
 }
