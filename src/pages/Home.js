@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import founderImg from "./founder-image.jpeg";
+import ClassGraph from "./ClassGraph";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -113,6 +114,10 @@ const Home = () => {
           </button>
         </div>
       </section>
+      {/* 🔥 GRAPH SECTION */}
+      <section>
+        <ClassGraph />
+      </section>
 
       {/* Founder Section */}
       <section className="founder-section">
@@ -136,6 +141,7 @@ const Home = () => {
                     style={{ backgroundImage: `url(${founderImg})` }}
                   ></div>
                 </div>
+                
 
                 <div className="founder-details">
                   <div className="founder-info">
@@ -178,6 +184,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      
 
     </div>
   );

@@ -1,13 +1,12 @@
-/* Navbar container */
+/* Navbar */
 .navbar {
   background: #fff;
-  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Navbar content layout */
 .navbar-content {
   display: flex;
   justify-content: space-between;
@@ -24,49 +23,23 @@
 
 .logo-img {
   width: 40px;
-  height: auto;
 }
 
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2c3e50;
 }
 
 /* Desktop nav */
 .desktop-nav {
   display: flex;
   gap: 20px;
+  font-weight: 600;
 }
 
 .nav-link {
   text-decoration: none;
   color: #2c3e50;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s;
-}
-
-.nav-link:hover {
-  color: #007bff;
-}
-
-/* NEW Badge */
-.new-badge {
-  background: red;
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 2px 5px;
-  border-radius: 5px;
-  margin-left: 5px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
 }
 
 /* Mobile button */
@@ -75,24 +48,31 @@
   font-size: 1.8rem;
   background: none;
   border: none;
-  cursor: pointer;
 }
 
-/* Mobile nav */
+/* 🔥 MOBILE NAV FIX */
 .mobile-nav {
-  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease-in-out;
   background: #f9f9f9;
-  padding: 15px;
-  border-top: 1px solid #ddd;
+}
+
+/* 🔥 OPEN STATE */
+.mobile-nav.open {
+  max-height: 500px;
+     /* 🔥 increased so ALL items show */
+      margin: 10px;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 15px;
 }
 
-/* Responsive styles */
+/* Responsive */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
@@ -101,9 +81,23 @@
   .mobile-menu-btn {
     display: block;
   }
+}
+/* 🔥 Fix mobile nav UI */
+.mobile-nav-links a {
+  text-decoration: none;        /* ❌ remove underline */
+  color: #2c3e50;               /* clean text color */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;  /* nice separation */
+  transition: color 0.3s;
+}
 
-  .mobile-nav {
-    display: block;
-    margin-left: 5%;
-  }
+.mobile-nav-links a:hover {
+  color: #007bff;
+}
+
+/* 🔥 spacing fix */
+.mobile-nav-links {
+  padding: 20px;
 }

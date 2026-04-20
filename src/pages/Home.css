@@ -4,13 +4,13 @@
 }
 
 /* ================= HEADER ================= */
-.header {
+/* .header {
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 50;
-}
+} */
 
 .header-content {
   max-width: 1280px;
@@ -405,4 +405,16 @@
     flex-direction: column;
     align-items: center;
   }
+}
+.mobile-nav {
+  overflow: hidden;
+  max-height: 0;                 /* 🔥 hidden initially */
+  transition: max-height 0.4s ease-in-out;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 🔥 when open */
+.mobile-nav.open {
+  max-height: 300px;            /* adjust if needed */
 }

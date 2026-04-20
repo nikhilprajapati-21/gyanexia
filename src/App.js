@@ -6,6 +6,7 @@ import Competitions from "./pages/Competitions";
 import PreviousResults from "./pages/PreviousResults";
 import ContactUs from "./pages/ContactUs";
 import Sponsors from "./pages/Sponsors";
+//import ClassGraph from "./pages/ClassGraph";
 
 // New Success Page
 import RegistrationSuccess from "./pages/RegistrationSuccess";

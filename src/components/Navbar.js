@@ -35,21 +35,19 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="mobile-nav">
-          <nav className="mobile-nav-links">
-            <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link to="/previous-results" className="nav-link" onClick={() => setIsMenuOpen(false)}>Previous Results</Link>
-            <Link to="/competitions" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-              Competitions <span className="new-badge">NEW</span>
-            </Link>
-            <Link to="/sponsors" className="nav-link" onClick={() => setIsMenuOpen(false)}>Sponsors</Link>
-            <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
-          </nav>
-        </div>
-      )}
+      {/* 🔥 ALWAYS RENDER (IMPORTANT CHANGE) */}
+      <div className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
+        <nav className="mobile-nav-links">
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link to="/previous-results" onClick={() => setIsMenuOpen(false)}>Previous Results</Link>
+          <Link to="/competitions" onClick={() => setIsMenuOpen(false)}>
+            Competitions <span className="new-badge">NEW</span>
+          </Link>
+          <Link to="/sponsors" onClick={() => setIsMenuOpen(false)}>Sponsors</Link>
+          <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+        </nav>
+      </div>
     </header>
   );
 };
