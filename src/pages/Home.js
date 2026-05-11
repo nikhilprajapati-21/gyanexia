@@ -93,6 +93,31 @@ const Home = () => {
           </div>
         </div>
       </section>
+     {/* Summer Camp Section */}
+<section className="summer-camp-section">
+  <div className="summer-camp-content">
+    <h2> GYANEXIA SUMMER CAMP'26</h2>
+
+    <p>
+      FREE Online Summer Camp for students of Class 5th to 10th
+      from 25 May 2026 to 15 June 2026.
+    </p>
+
+    <p>
+      Learn Basic Maths, AI Basics, Communication Skills,
+      Creativity, Life Skills and Teamwork with expert teachers.
+    </p>
+
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLScrzr72X4whjmBtYKpySbTbgwROoPGBLdDuPAMg8viaqP4r9w/viewform?usp=publish-editor"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="summer-camp-btn"
+    >
+      Register Now 
+    </a>
+  </div>
+</section>
 
       {/* Slider Section */}
       <section className="slider-section">

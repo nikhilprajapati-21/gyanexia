@@ -418,3 +418,62 @@
 .mobile-nav.open {
   max-height: 300px;            /* adjust if needed */
 }
+/* ================= SUMMER CAMP ================= */
+
+.summer-camp-section {
+  background: linear-gradient(135deg, #ffedf5, #eef4ff);
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.summer-camp-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.summer-camp-content h2 {
+  font-size: 2.2rem;
+  color: rgb(255, 0, 115);
+  margin-bottom: 1rem;
+}
+
+.summer-camp-content p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.summer-camp-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #2563eb;
+  color: white;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.summer-camp-btn:hover {
+  background: #1746a2;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .summer-camp-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .summer-camp-content p {
+    font-size: 1rem;
+  }
+}
