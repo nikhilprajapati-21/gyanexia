@@ -59,7 +59,7 @@
   margin-left: 4px;
 }
 
-/* 🔥 Donate Button */
+/* Donate Button */
 .donate-btn {
   background: linear-gradient(135deg, #e63946, #ff6b6b);
   color: white;
@@ -83,66 +83,86 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: #111827;
 }
 
-/* Mobile Nav */
+/* Hide mobile nav on desktop */
+/* Hide mobile nav completely */
 .mobile-nav {
-  overflow: hidden;
+  display: none;
   max-height: 0;
-  transition: max-height 0.4s ease-in-out;
-  background: #f9f9f9;
-}
-
-.mobile-nav.open {
-  max-height: 500px;
-  margin: 10px;
-}
-
-.mobile-nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-}
-
-/* Mobile links */
-.mobile-nav-links a {
-  text-decoration: none;
-  color: #2c3e50;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  transition: color 0.3s;
-}
-
-.mobile-nav-links a:hover {
-  color: #007bff;
-}
-
-/* 🔥 Mobile Donate Button */
-.mobile-donate-btn {
-  background: #e63946;
-  color: white !important;
-  text-align: center;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 700;
-  margin-top: 10px;
-  border-bottom: none !important;
+  overflow: hidden;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+
+  /* Hide desktop nav */
   .desktop-nav {
     display: none;
   }
 
+  /* Show menu button */
   .mobile-menu-btn {
     display: block;
   }
 
+  /* Logo */
   .logo-text {
     font-size: 1.3rem;
+  }
+
+  /* Mobile Nav */
+  .mobile-nav {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #f9f9f9;
+}
+
+  /* Open menu */
+  .mobile-nav.open {
+    max-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    border-radius: 14px;
+    margin: 10px;
+  }
+
+  /* Links container */
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 18px;
+  }
+
+  /* Mobile links */
+  .mobile-nav-links a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav-links a:hover {
+    color: #007bff;
+  }
+
+  /* Mobile Donate Button */
+  .mobile-donate-btn {
+    background: linear-gradient(135deg, #e63946, #ff6b6b);
+    color: white !important;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 10px;
+    border-bottom: none !important;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
   }
 }
