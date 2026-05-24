@@ -6,6 +6,8 @@ import Competitions from "./pages/Competitions";
 import PreviousResults from "./pages/PreviousResults";
 import ContactUs from "./pages/ContactUs";
 import Sponsors from "./pages/Sponsors";
+import Donate from "./pages/Donate";
+import ThankYou from "./pages/ThankYou";
 //import ClassGraph from "./pages/ClassGraph";
 
 // New Success Page
@@ -28,6 +30,8 @@ function App() {
           <Route path="/previous-results" element={<PreviousResults />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/thank-you" element={<ThankYou />} />
 
           {/* Legal Pages */}
           <Route path="/terms" element={<Terms />} />

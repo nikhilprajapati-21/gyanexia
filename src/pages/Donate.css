@@ -1,0 +1,77 @@
+/* Page */
+.donate-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8fafc, #eef2ff);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hero */
+.donate-hero {
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+
+.donate-hero h1 {
+  font-size: 3rem;
+  color: #e63946;
+  margin-bottom: 15px;
+}
+
+.donate-hero p {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* Donation Card */
+.donate-card {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.donate-card h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+.donate-text {
+  color: #64748b;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Razorpay Button */
+.razorpay-btn {
+  margin-top: 20px;
+}
+
+/* Footer */
+.donate-footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .donate-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .donate-card {
+    padding: 30px 20px;
+  }
+
+}
