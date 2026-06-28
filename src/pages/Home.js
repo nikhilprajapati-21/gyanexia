@@ -132,7 +132,7 @@ const Home = () => {
         </div>
 
         <div className="course-footer">
-          <span className="course-price">FREE</span>
+          <span className="course-price">Basic Mathematics</span>
         </div>
 
         <button className="course-btn disabled-btn" disabled>
@@ -166,7 +166,7 @@ const Home = () => {
     </div>
 
     <div className="course-footer">
-      <span className="course-price">FREE</span>
+      <span className="course-price">Advanced Mathematics</span>
     </div>
 
    <button className="course-btn disabled-btn" disabled>
