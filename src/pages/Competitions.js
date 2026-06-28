@@ -21,7 +21,7 @@ export default function Competitions() {
           <p>🎯 Classes: 5th – 12th</p>
           <p>📍 Mode: Offline</p>
           <p>📅 Exam Date: <strong>Coming Soon</strong></p>
-          <p>🏅 Prizes: Upto ₹2000</p>
+        <p>🏅 Prize details will be announced soon.</p>
         </div>
 
         <p className="competition-extra">

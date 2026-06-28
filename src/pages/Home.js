@@ -93,29 +93,121 @@ const Home = () => {
           </div>
         </div>
       </section>
-     {/* Summer Camp Section */}
-<section className="summer-camp-section">
-  <div className="summer-camp-content">
-    <h2> GYANEXIA SUMMER CAMP'26</h2>
+     
+
+
+{/* Featured Programs */}
+<section className="courses-section">
+  <div className="courses-header">
+    <h2>Featured Programs</h2>
+    <p>
+      Explore Gyanexia's featured learning programs and summer camp
+    </p>
+  </div>
+
+  <div className="courses-grid">
+
+    {/* Basic Maths */}
+    <div className="course-card">
+      <img
+        src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800"
+        alt="Basic Mathematics"
+        className="course-image"
+      />
+
+      <span className="course-tag">Maths</span>
+
+      <div className="course-content">
+        <h3>Basic Mathematics</h3>
+
+        <p>
+          Designed for Class 5th & 6th students. Learn arithmetic,
+          fractions, decimals, percentages and problem-solving skills
+          through interactive lessons.
+        </p>
+
+        <div className="course-info">
+          <span>👨‍🎓 Class 5-6</span>
+          <span>📚 Foundation</span>
+        </div>
+
+        <div className="course-footer">
+          <span className="course-price">FREE</span>
+        </div>
+
+        <button className="course-btn disabled-btn" disabled>
+  Coming Soon
+</button>
+      </div>
+    </div>
+
+    {/* Advanced Maths */}
+<div className="course-card">
+  <img
+    src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800"
+    alt="Advanced Mathematics"
+    className="course-image"
+  />
+
+  <span className="course-tag">Maths</span>
+
+  <div className="course-content">
+    <h3>Advanced Mathematics</h3>
 
     <p>
-      FREE Online Summer Camp for students of Class 5th to 10th
-      from 25 May 2026 to 15 June 2026.
+      For Class 8th to 10th students. Strengthen algebra,
+      geometry, reasoning and Olympiad-level thinking with
+      advanced concepts and problem solving.
     </p>
 
+    <div className="course-info">
+      <span>👨‍🎓 Class 8-10</span>
+      <span>📚 Advanced</span>
+    </div>
+
+    <div className="course-footer">
+      <span className="course-price">FREE</span>
+    </div>
+
+   <button className="course-btn disabled-btn" disabled>
+  Coming Soon
+</button>
+  </div>
+</div>
+
+    {/* Gyanexia Summer Camp */}
+<div className="course-card">
+  <img
+    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
+    alt="Gyanexia Summer Camp"
+    className="course-image"
+  />
+
+  <span className="course-tag">Summer Camp</span>
+
+  <div className="course-content">
+    <h3>GYANEXIA SUMMER CAMP'26</h3>
+
     <p>
+      FREE Online Summer Camp for students of Class 5th to 10th.
       Learn Basic Maths, AI Basics, Communication Skills,
       Creativity, Life Skills and Teamwork with expert teachers.
     </p>
 
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScrzr72X4whjmBtYKpySbTbgwROoPGBLdDuPAMg8viaqP4r9w/viewform?usp=publish-editor"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="summer-camp-btn"
-    >
-      Register Now 
-    </a>
+    <div className="course-info">
+      <span>📅 25 May - 15 June</span>
+      <span>👨‍🎓 Class 5-10</span>
+    </div>
+
+    <div className="course-footer">
+      <span className="course-closed">Registration Closed</span>
+    </div>
+
+  <button className="course-btn disabled-btn" disabled>
+  Registration Closed
+</button>
+  </div>
+</div>
   </div>
 </section>
 
