@@ -83,11 +83,11 @@ const Home = () => {
 
             <div className="marquee-container">
               <div className="marquee-content">
-                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
-                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
-                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
-                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
-                <span>📢 New Competition & Activity Coming Soon – Stay Tuned with Gyanexia!</span>
+                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
+                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
+                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
+               <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
+               <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
               </div>
             </div>
           </div>
@@ -235,6 +235,9 @@ const Home = () => {
       <section>
         <ClassGraph />
       </section>
+
+
+      
 
       {/* Founder Section */}
       <section className="founder-section">

@@ -20,7 +20,7 @@ export default function Competitions() {
         <div className="competition-details">
           <p>🎯 Classes: 5th – 12th</p>
           <p>📍 Mode: Offline</p>
-          <p>📅 Exam Date: <strong>Coming Soon</strong></p>
+          <p>📅 Exam Date: <strong>December 2026</strong></p>
         <p>🏅 Prize details will be announced soon.</p>
         </div>
 
