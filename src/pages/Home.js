@@ -70,16 +70,26 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="hero-section">
+        <span className="hero-shape hero-shape--one" aria-hidden="true">✦</span>
+        <span className="hero-shape hero-shape--two" aria-hidden="true">∑</span>
+        <span className="hero-shape hero-shape--three" aria-hidden="true">⚗</span>
         <div className="hero-content">
           <div className={`hero-text ${isVisible ? "visible" : ""}`}>
+            <p className="hero-kicker">LEARN • EXPLORE • SHINE</p>
             <h1 className="hero-title">
-              Welcome to <span className="hero-highlight">Gyanexia</span>
+              A brighter way to <span className="hero-highlight">learn.</span>
             </h1>
 
             <p className="hero-description">
-              Empowering minds through knowledge and innovation. Your journey to
-              excellence starts here.
+              Gyanexia helps Class 5–12 students build confidence, curiosity and
+              problem-solving skills—one exciting challenge at a time.
             </p>
+
+            <div className="hero-pills" aria-label="Learning areas">
+              <span>🔢 Maths</span>
+              <span>💡 Reasoning</span>
+              <span>🚀 Creativity</span>
+            </div>
 
             <div className="marquee-container">
               <div className="marquee-content">
@@ -108,7 +118,7 @@ const Home = () => {
   <div className="courses-grid">
 
     {/* Basic Maths */}
-    <div className="course-card">
+    <div className="course-card course-card--maths">
       <img
         src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800"
         alt="Basic Mathematics"
@@ -142,7 +152,7 @@ const Home = () => {
     </div>
 
     {/* Advanced Maths */}
-<div className="course-card">
+<div className="course-card course-card--advanced">
   <img
     src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800"
     alt="Advanced Mathematics"
@@ -176,7 +186,7 @@ const Home = () => {
 </div>
 
     {/* Gyanexia Summer Camp */}
-<div className="course-card">
+<div className="course-card course-card--camp">
   <img
     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
     alt="Gyanexia Summer Camp"

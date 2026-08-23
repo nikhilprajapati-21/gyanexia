@@ -18,6 +18,9 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Refund from "./pages/Refund";
 import Disclaimer from "./pages/Disclaimer"; // ✅ Imported Disclaimer page
+import Login from "./pages/Login";
+import StudentRegister from "./pages/StudentRegister";
+import StudentDashboard from "./pages/StudentDashboard";
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
 
           {/* ✅ Registration Success Page */}
           <Route path="/registration-success" element={<RegistrationSuccess />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/student/register" element={<StudentRegister />} />
+          <Route path="/student/dashboard" element={<StudentDashboard />} />
         </Routes>
       </Layout>
     </Router>

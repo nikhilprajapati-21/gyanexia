@@ -1,82 +1,479 @@
-/* Navbar */
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 3px 16px rgba(41, 51, 95, 0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .navbar-content {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 28px;
+  box-sizing: border-box;
 }
 
-/* Logo */
+
+/* =========================
+   LOGO
+========================= */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
+  text-decoration: none;
 }
 
 .logo-img {
-  width: 40px;
+  width: 42px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .logo-text {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #1e293b;
+  font-weight: 800;
+  color: #273762;
 }
 
-/* Desktop nav */
+
+/* =========================
+   DESKTOP NAV
+========================= */
+
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-left: auto;
   font-weight: 600;
 }
 
 .nav-link {
   text-decoration: none;
   color: #2c3e50;
-  transition: color 0.3s ease;
+  white-space: nowrap;
+  transition: color 0.25s ease;
 }
 
 .nav-link:hover {
-  color: #e63946;
+  color: #7254cf;
 }
 
-/* NEW badge */
+
+/* =========================
+   NEW BADGE
+========================= */
+
 .new-badge {
-  background: #e63946;
+  display: inline-block;
+  background: #ee668d;
   color: white;
-  font-size: 0.65rem;
-  padding: 2px 6px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 6px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-btn {
+  padding: 9px 16px;
+  border: 1px solid #7358cf;
+  border-radius: 10px;
+  color: #674dc1;
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.login-btn:hover {
+  background: #f0ecff;
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 16px;
+
+  border: 1px solid #7358cf;
+  border-radius: 10px;
+
+  color: #674dc1;
+  background: white;
+
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+}
+
+.dashboard-nav-btn:hover {
+  background: #f0ecff;
+  transform: translateY(-1px);
+}
+
+.dashboard-arrow {
+  font-size: 0.55rem;
+  margin-top: 2px;
+}
+
+
+/* =========================
+   SUPPORT US
+========================= */
+
+.donate-btn {
+  background: linear-gradient(135deg, #6f56ce, #a05dd7);
+  color: white;
+
+  text-decoration: none;
+
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  font-weight: 700;
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 4px 12px rgba(111, 86, 206, 0.25);
+}
+
+.donate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(111, 86, 206, 0.35);
+}
+
+
+/* =========================
+   MOBILE BUTTON
+========================= */
+
+.mobile-menu-btn {
+  display: none;
+
+  font-size: 1.8rem;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  color: #111827;
+}
+
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+  .navbar-content {
+    padding: 10px 18px;
+  }
+
+  .desktop-nav {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.92rem;
+  }
+
+  .logo-text {
+    font-size: 1.35rem;
+  }
+
+  .login-btn,
+  .dashboard-nav-btn {
+    padding: 8px 12px;
+  }
+
+  .donate-btn {
+    padding: 9px 13px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .logo-img {
+    width: 38px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  .mobile-nav {
+    display: block;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 0.4s ease;
+
+    background: #f9f9f9;
+  }
+
+  .mobile-nav.open {
+    max-height: 100vh;
+
+    overflow-y: auto;
+
+    border-radius: 14px;
+
+    margin: 8px 10px 10px;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+
+    padding: 12px 18px;
+  }
+
+  .mobile-nav-links a {
+    text-decoration: none;
+
+    color: #2c3e50;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #eee;
+
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav-links a:hover {
+    color: #7254cf;
+  }
+
+  .mobile-auth-link,
+  .mobile-dashboard-link {
+    font-weight: 800 !important;
+    color: #674dc1 !important;
+  }
+
+  .mobile-donate-btn {
+    background: linear-gradient(135deg, #6f56ce, #a05dd7);
+
+    color: white !important;
+
+    text-align: center;
+
+    padding: 12px !important;
+
+    border-radius: 12px;
+
+    font-weight: 700 !important;
+
+    margin-top: 12px;
+
+    border-bottom: none !important;
+
+    box-shadow: 0 4px 12px rgba(111, 86, 206, 0.25);
+  }
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 42px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #273762;
+}
+
+
+/* =========================
+   DESKTOP NAVIGATION
+========================= */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 17px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2c3e50;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #7254cf;
+}
+
+
+/* =========================
+   NEW BADGE
+========================= */
+
+.new-badge {
+  display: inline-block;
+  background: #ee668d;
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 3px 6px;
   border-radius: 6px;
   margin-left: 4px;
+  vertical-align: middle;
 }
 
-/* Donate Button */
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+  padding: 9px 15px;
+  border: 1px solid #7358cf;
+  border-radius: 10px;
+  color: #674dc1;
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.login-btn:hover {
+  background: #f0ecff;
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   DASHBOARD BUTTON
+========================= */
+
+.dashboard-nav-btn {
+  padding: 9px 15px;
+  border: 1px solid #7358cf;
+  border-radius: 10px;
+  color: #674dc1;
+  background: white;
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.dashboard-nav-btn:hover {
+  background: #f0ecff;
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   SUPPORT US
+========================= */
+
 .donate-btn {
-  background: linear-gradient(135deg, #e63946, #ff6b6b);
+  background: linear-gradient(135deg, #6f56ce, #a05dd7);
   color: white;
   text-decoration: none;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
+  white-space: nowrap;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+  box-shadow: 0 4px 12px rgba(111, 86, 206, 0.25);
 }
 
 .donate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(230, 57, 70, 0.35);
+  box-shadow: 0 6px 16px rgba(111, 86, 206, 0.35);
 }
 
-/* Mobile button */
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
 .mobile-menu-btn {
   display: none;
   font-size: 1.8rem;
@@ -84,42 +481,87 @@
   border: none;
   cursor: pointer;
   color: #111827;
+  padding: 5px;
 }
 
-/* Hide mobile nav on desktop */
-/* Hide mobile nav completely */
+
+/* =========================
+   MOBILE NAV
+========================= */
+
 .mobile-nav {
   display: none;
   max-height: 0;
   overflow: hidden;
 }
 
-/* Responsive */
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+
+  .navbar-content {
+    padding: 10px 18px;
+  }
+
+  .desktop-nav {
+    gap: 12px;
+  }
+
+  .logo-text {
+    font-size: 1.35rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .login-btn,
+  .dashboard-nav-btn {
+    padding: 8px 12px;
+  }
+
+  .donate-btn {
+    padding: 9px 13px;
+  }
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
 @media (max-width: 768px) {
 
-  /* Hide desktop nav */
+  /* Hide desktop navigation */
   .desktop-nav {
     display: none;
   }
 
-  /* Show menu button */
+  /* Show hamburger */
   .mobile-menu-btn {
     display: block;
   }
 
   /* Logo */
+  .logo-img {
+    width: 38px;
+  }
+
   .logo-text {
     font-size: 1.3rem;
   }
 
-  /* Mobile Nav */
+  /* Mobile navigation */
   .mobile-nav {
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: #f9f9f9;
-}
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #f9f9f9;
+  }
 
   /* Open menu */
   .mobile-nav.open {
@@ -127,7 +569,7 @@
     height: auto;
     overflow-y: auto;
     border-radius: 14px;
-    margin: 10px;
+    margin: 8px 10px 10px;
   }
 
   /* Links container */
@@ -143,26 +585,221 @@
     text-decoration: none;
     color: #2c3e50;
     font-size: 1rem;
-    font-weight: 500;
-    padding: 10px 0;
+    font-weight: 600;
+    padding: 12px 0;
     border-bottom: 1px solid #eee;
     transition: color 0.3s ease;
   }
 
   .mobile-nav-links a:hover {
-    color: #007bff;
+    color: #7254cf;
   }
 
-  /* Mobile Donate Button */
+
+  /* Mobile authentication link */
+  .mobile-auth-link {
+    font-weight: 800 !important;
+  }
+
+
+  /* Mobile dashboard */
+  .mobile-dashboard-link {
+    font-weight: 800 !important;
+    color: #674dc1 !important;
+  }
+
+
+  /* Mobile logout */
+  .mobile-logout-btn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .mobile-logout-btn:hover {
+    color: #7254cf;
+  }
+
+
+  /* Mobile Support Us */
   .mobile-donate-btn {
-    background: linear-gradient(135deg, #e63946, #ff6b6b);
+    background: linear-gradient(135deg, #6f56ce, #a05dd7);
     color: white !important;
     text-align: center;
     padding: 12px;
     border-radius: 12px;
-    font-weight: 700;
-    margin-top: 10px;
+    font-weight: 700 !important;
+    margin-top: 12px;
     border-bottom: none !important;
-    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+    box-shadow: 0 4px 12px rgba(111, 86, 206, 0.25);
   }
+}
+
+/* =========================
+   DASHBOARD DROPDOWN
+========================= */
+
+.dashboard-dropdown {
+  position: relative;
+}
+
+.dashboard-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 16px;
+
+  border: 1px solid #7358cf;
+  border-radius: 10px;
+
+  color: #674dc1;
+  background: white;
+
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+}
+
+.dashboard-nav-btn:hover {
+  background: #f0ecff;
+  transform: translateY(-1px);
+}
+
+.dashboard-arrow {
+  font-size: 0.55rem;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-arrow.open {
+  transform: rotate(180deg);
+}
+
+
+/* Dropdown box */
+
+.dashboard-menu {
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 215px;
+
+  background: white;
+
+  border: 1px solid #e5e0f5;
+  border-radius: 12px;
+
+  padding: 7px;
+
+  box-shadow:
+    0 12px 30px rgba(39, 55, 98, 0.14);
+
+  z-index: 2000;
+
+  animation: dashboardMenuOpen 0.18s ease;
+}
+
+@keyframes dashboardMenuOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Dropdown links */
+
+.dashboard-menu a,
+.dropdown-logout {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+
+  border-radius: 8px;
+
+  color: #2c3e50;
+
+  background: transparent;
+
+  border: none;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition: all 0.2s ease;
+}
+
+.dashboard-menu a:hover {
+  background: #f4f1ff;
+  color: #674dc1;
+}
+
+.dropdown-logout:hover {
+  background: #fff0f2;
+  color: #d43f5b;
+}
+
+.dashboard-menu-divider {
+  height: 1px;
+
+  background: #eeeaf7;
+
+  margin: 6px 4px;
+}
+
+
+/* =========================
+   MOBILE DASHBOARD
+========================= */
+
+.mobile-dashboard-title {
+  color: #674dc1;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+
+  padding: 12px 0 6px;
+
+  border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+
+  .dashboard-dropdown {
+    display: none;
+  }
+
 }
