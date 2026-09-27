@@ -1,11 +1,10 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
+
 /*
  * ==========================================
  * PROTECT
- *
- * LOGIN REQUIRED
  * ==========================================
  */
 
@@ -15,6 +14,10 @@ export const protect = async (
   next
 ) => {
   try {
+    /*
+     * First check Authorization header
+     */
+
     const authorization =
       request.headers.authorization;
 
@@ -23,9 +26,19 @@ export const protect = async (
         ? authorization.slice(7)
         : undefined;
 
+    /*
+     * Then check cookie
+     */
+
+    const cookieToken =
+      request.cookies?.token;
+
+    /*
+     * Use cookie first, then Bearer token
+     */
+
     const token =
-      request.cookies?.token ||
-      bearerToken;
+      cookieToken || bearerToken;
 
     if (!token) {
       return response.status(401).json({
@@ -33,10 +46,18 @@ export const protect = async (
       });
     }
 
+    /*
+     * Verify JWT
+     */
+
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET
     );
+
+    /*
+     * Find user
+     */
 
     const user = await User.findById(
       decoded.userId
@@ -49,10 +70,19 @@ export const protect = async (
       });
     }
 
+    /*
+     * Attach user to request
+     */
+
     request.user = user;
 
     next();
   } catch (error) {
+    console.error(
+      "Authentication error:",
+      error.message
+    );
+
     return response.status(401).json({
       message:
         "Invalid or expired authentication token.",
@@ -64,18 +94,7 @@ export const protect = async (
 /*
  * ==========================================
  * OPTIONAL PROTECT
- *
- * LOGIN NOT REQUIRED
  * ==========================================
- *
- * If the user is logged in:
- *     request.user = user
- *
- * If the user is NOT logged in:
- *     request.user = undefined
- *
- * This is useful for public pages such
- * as Contact Us.
  */
 
 export const optionalProtect = async (
@@ -92,24 +111,16 @@ export const optionalProtect = async (
         ? authorization.slice(7)
         : undefined;
 
-    const token =
-      request.cookies?.token ||
-      bearerToken;
+    const cookieToken =
+      request.cookies?.token;
 
-    /*
-     * No token is completely fine.
-     * Continue as a public user.
-     */
+    const token =
+      cookieToken || bearerToken;
 
     if (!token) {
       request.user = undefined;
       return next();
     }
-
-    /*
-     * Token exists, so try to identify
-     * the logged-in user.
-     */
 
     const decoded = jwt.verify(
       token,
@@ -120,26 +131,11 @@ export const optionalProtect = async (
       decoded.userId
     );
 
-    /*
-     * If token is valid and user exists,
-     * attach user to request.
-     */
-
-    if (user) {
-      request.user = user;
-    } else {
-      request.user = undefined;
-    }
+    request.user = user || undefined;
 
     next();
   } catch (error) {
-    /*
-     * If token is expired/invalid, we don't
-     * block the public Contact Us form.
-     */
-
     request.user = undefined;
-
     next();
   }
 };
@@ -156,6 +152,12 @@ export const studentOnly = (
   response,
   next
 ) => {
+  if (!request.user) {
+    return response.status(401).json({
+      message: "Authentication is required.",
+    });
+  }
+
   if (request.user.role !== "student") {
     return response.status(403).json({
       message: "Student access required.",
@@ -177,6 +179,12 @@ export const adminOrSuperAdmin = (
   response,
   next
 ) => {
+  if (!request.user) {
+    return response.status(401).json({
+      message: "Authentication is required.",
+    });
+  }
+
   if (
     request.user.role !== "admin" &&
     request.user.role !== "superadmin"
@@ -202,6 +210,12 @@ export const superAdminOnly = (
   response,
   next
 ) => {
+  if (!request.user) {
+    return response.status(401).json({
+      message: "Authentication is required.",
+    });
+  }
+
   if (request.user.role !== "superadmin") {
     return response.status(403).json({
       message:

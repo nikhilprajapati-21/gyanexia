@@ -37,21 +37,47 @@ app.use(helmet());
  * ==========================================
  */
 
-const configuredOrigins = (process.env.CLIENT_ORIGIN || "")
+const configuredOrigins = (
+  process.env.CLIENT_ORIGIN || ""
+)
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
-const localOrigins = process.env.NODE_ENV === "production"
-  ? []
-  : ["http://localhost:3000", "http://localhost:3001"];
-const allowedOrigins = [...new Set([...configuredOrigins, ...localOrigins])];
+
+const productionOrigins = [
+  "https://www.gyanexia.in",
+  "https://gyanexia.in",
+];
+
+const localOrigins =
+  process.env.NODE_ENV === "production"
+    ? []
+    : [
+        "http://localhost:3000",
+        "http://localhost:3001",
+      ];
+
+const allowedOrigins = [
+  ...new Set([
+    ...productionOrigins,
+    ...configuredOrigins,
+    ...localOrigins,
+  ]),
+];
+
+console.log(
+  "Allowed CORS origins:",
+  allowedOrigins
+);
 
 app.use(
   cors({
     origin: (origin, callback) => {
+      /*
+       * Allow requests without an Origin header.
+       * Useful for Postman and server-to-server requests.
+       */
 
-      // Allow requests without an Origin header
-      // such as server-to-server requests.
       if (!origin) {
         return callback(null, true);
       }
@@ -70,6 +96,10 @@ app.use(
         )
       );
     },
+
+    /*
+     * VERY IMPORTANT FOR LOGIN COOKIES
+     */
 
     credentials: true,
 
@@ -230,7 +260,6 @@ app.use(
     response,
     _next
   ) => {
-
     console.error(error);
 
 
@@ -307,8 +336,7 @@ app.use(
 
     return response
       .status(
-        error?.statusCode ||
-          500
+        error?.statusCode || 500
       )
       .json({
         message:

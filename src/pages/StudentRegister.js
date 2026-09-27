@@ -27,7 +27,7 @@ export default function StudentRegister() {
       ...current,
       [name]:
         name === "mobileNumber"
-          ? value.replace(/\D/g, "")
+          ? value.replace(/\D/g, "").slice(0, 10)
           : value,
     }));
   };
@@ -36,44 +36,88 @@ export default function StudentRegister() {
     event.preventDefault();
     setError("");
 
-    // Validate mobile number
+    // -----------------------------
+    // BASIC VALIDATION
+    // -----------------------------
+
+    if (!form.name.trim()) {
+      return setError("Please enter your full name.");
+    }
+
+    if (!form.class) {
+      return setError("Please select your class.");
+    }
+
+    if (!form.medium) {
+      return setError("Please select your medium.");
+    }
+
     if (!/^[6-9]\d{9}$/.test(form.mobileNumber)) {
       return setError(
         "Please enter a valid 10-digit mobile number."
       );
     }
 
-    // Validate password
+    if (!form.schoolOrCoaching.trim()) {
+      return setError(
+        "Please enter your school or coaching name."
+      );
+    }
+
     if (form.password.length < 8) {
       return setError(
         "Password must be at least 8 characters long."
       );
     }
 
-    // Confirm password
     if (form.password !== form.confirmPassword) {
       return setError("Passwords do not match.");
     }
 
+    // -----------------------------
+    // SUBMIT
+    // -----------------------------
+
     setIsSubmitting(true);
 
     try {
-      // Don't send confirmPassword to backend
-      const { confirmPassword, ...student } = form;
+      // Never send confirmPassword to backend
+      const {
+        confirmPassword,
+        ...student
+      } = form;
 
-      // FIX:
-      // authApi has registerStudent(), not register()
-      await authApi.registerStudent(student);
+      console.log("Registering student:", {
+        ...student,
+        password: "***",
+      });
 
-      // Registration successful
+      const response =
+        await authApi.registerStudent(student);
+
+      console.log(
+        "Registration successful:",
+        response
+      );
+
+      /*
+       * Backend creates the account and sets
+       * the authentication cookie.
+       *
+       * Go directly to dashboard.
+       */
       navigate("/student/dashboard", {
+        replace: true,
         state: {
           message:
             "Your student account was created successfully.",
         },
       });
     } catch (requestError) {
-      console.error("Student registration error:", requestError);
+      console.error(
+        "Student registration error:",
+        requestError
+      );
 
       setError(
         requestError?.message ||
@@ -88,6 +132,7 @@ export default function StudentRegister() {
     <section className="auth-page auth-page--register">
       <div className="auth-card auth-card--wide">
 
+        {/* Header */}
         <p className="auth-eyebrow">
           GYANEXIA STUDENT PORTAL
         </p>
@@ -95,9 +140,11 @@ export default function StudentRegister() {
         <h1>Create your account</h1>
 
         <p className="auth-intro">
-          Join Gyanexia and get ready for your next learning challenge.
+          Join Gyanexia and get ready for your next
+          learning challenge.
         </p>
 
+        {/* Error */}
         {error && (
           <p
             className="auth-error"
@@ -107,6 +154,7 @@ export default function StudentRegister() {
           </p>
         )}
 
+        {/* Form */}
         <form
           className="auth-form auth-form--grid"
           onSubmit={handleSubmit}
@@ -122,13 +170,14 @@ export default function StudentRegister() {
             <input
               id="name"
               name="name"
+              type="text"
               value={form.name}
               onChange={updateField}
               autoComplete="name"
+              placeholder="Enter your full name"
               required
             />
           </div>
-
 
           {/* Class */}
           <div className="auth-field">
@@ -160,7 +209,6 @@ export default function StudentRegister() {
             </select>
           </div>
 
-
           {/* Medium */}
           <div className="auth-field">
             <label htmlFor="medium">
@@ -188,8 +236,7 @@ export default function StudentRegister() {
             </select>
           </div>
 
-
-          {/* Mobile Number */}
+          {/* Mobile */}
           <div className="auth-field">
             <label htmlFor="mobileNumber">
               Mobile Number
@@ -200,16 +247,16 @@ export default function StudentRegister() {
               name="mobileNumber"
               type="tel"
               inputMode="numeric"
-              maxLength="10"
+              maxLength={10}
               value={form.mobileNumber}
               onChange={updateField}
               autoComplete="tel"
+              placeholder="10-digit mobile number"
               required
             />
           </div>
 
-
-          {/* School / Coaching */}
+          {/* School */}
           <div className="auth-field">
             <label htmlFor="schoolOrCoaching">
               School / Coaching Name
@@ -218,12 +265,13 @@ export default function StudentRegister() {
             <input
               id="schoolOrCoaching"
               name="schoolOrCoaching"
+              type="text"
               value={form.schoolOrCoaching}
               onChange={updateField}
+              placeholder="Enter school/coaching name"
               required
             />
           </div>
-
 
           {/* Password */}
           <div className="auth-field">
@@ -238,10 +286,10 @@ export default function StudentRegister() {
               value={form.password}
               onChange={updateField}
               autoComplete="new-password"
+              placeholder="Minimum 8 characters"
               required
             />
           </div>
-
 
           {/* Confirm Password */}
           <div className="auth-field">
@@ -256,10 +304,10 @@ export default function StudentRegister() {
               value={form.confirmPassword}
               onChange={updateField}
               autoComplete="new-password"
+              placeholder="Re-enter password"
               required
             />
           </div>
-
 
           {/* Submit */}
           <button
@@ -268,13 +316,13 @@ export default function StudentRegister() {
             disabled={isSubmitting}
           >
             {isSubmitting
-              ? "Creating account…"
+              ? "Creating account..."
               : "Create Student Account"}
           </button>
 
         </form>
 
-
+        {/* Login */}
         <p className="auth-switch">
           Already registered?{" "}
           <Link to="/login">

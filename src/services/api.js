@@ -1,7 +1,14 @@
+/*
+ * ==========================================
+ * API BASE URL
+ * ==========================================
+ */
+
 export const API_BASE_URL = (
   process.env.REACT_APP_API_URL ||
   "http://localhost:5000/api"
 ).replace(/\/$/, "");
+
 
 /*
  * ==========================================
@@ -9,10 +16,18 @@ export const API_BASE_URL = (
  * ==========================================
  */
 
-export async function apiRequest(endpoint, options = {}) {
+export async function apiRequest(
+  endpoint,
+  options = {}
+) {
   const response = await fetch(
     `${API_BASE_URL}${endpoint}`,
     {
+      /*
+       * IMPORTANT
+       * Allows browser to send/receive
+       * authentication cookies.
+       */
       credentials: "include",
 
       headers: {
@@ -35,7 +50,7 @@ export async function apiRequest(endpoint, options = {}) {
   if (!response.ok) {
     const error = new Error(
       data?.message ||
-        "Something went wrong. Please try again."
+        `Request failed with status ${response.status}.`
     );
 
     error.status = response.status;
@@ -56,6 +71,10 @@ export async function apiRequest(endpoint, options = {}) {
 
 export const authApi = {
 
+  /*
+   * GET CURRENT USER
+   */
+
   me: async () => {
     return apiRequest(
       "/auth/me",
@@ -65,6 +84,10 @@ export const authApi = {
     );
   },
 
+
+  /*
+   * LOGIN
+   */
 
   login: async (credentials) => {
     return apiRequest(
@@ -77,6 +100,10 @@ export const authApi = {
   },
 
 
+  /*
+   * LOGOUT
+   */
+
   logout: async () => {
     return apiRequest(
       "/auth/logout",
@@ -87,7 +114,31 @@ export const authApi = {
   },
 
 
+  /*
+   * STUDENT REGISTRATION
+   */
+
   registerStudent: async (studentData) => {
+    return apiRequest(
+      "/auth/register",
+      {
+        method: "POST",
+        body: JSON.stringify(studentData),
+      }
+    );
+  },
+
+
+  /*
+   * ALIAS
+   *
+   * This also allows code such as:
+   *
+   * authApi.register(...)
+   *
+   */
+
+  register: async (studentData) => {
     return apiRequest(
       "/auth/register",
       {
@@ -149,7 +200,10 @@ export const queryApi = {
   },
 
 
-  update: async (id, queryData) => {
+  update: async (
+    id,
+    queryData
+  ) => {
     return apiRequest(
       `/queries/${id}`,
       {
@@ -181,11 +235,7 @@ export const queryApi = {
 export const competitionApi = {
 
   /*
-   * ========================================
    * GET ALL COMPETITIONS
-   *
-   * PUBLIC
-   * ========================================
    */
 
   all: async () => {
@@ -199,11 +249,7 @@ export const competitionApi = {
 
 
   /*
-   * ========================================
    * GET UPCOMING COMPETITIONS
-   *
-   * PUBLIC
-   * ========================================
    */
 
   upcoming: async () => {
@@ -217,11 +263,7 @@ export const competitionApi = {
 
 
   /*
-   * ========================================
    * GET SINGLE COMPETITION
-   *
-   * PUBLIC
-   * ========================================
    */
 
   get: async (id) => {
@@ -235,11 +277,7 @@ export const competitionApi = {
 
 
   /*
-   * ========================================
    * REGISTER FOR COMPETITION
-   *
-   * STUDENT
-   * ========================================
    */
 
   register: async (id) => {
