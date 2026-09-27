@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./AdminDashboard.css";
 import { API_BASE_URL } from "../services/api";
 
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
    * ==========================================
    */
 
-  const apiRequest = async (
+  const apiRequest = useCallback(async (
     endpoint,
     options = {}
   ) => {
@@ -90,12 +90,12 @@ const AdminDashboard = () => {
     }
 
     return data;
-  };
+  }, []);
 
-  const clearMessages = () => {
+  const clearMessages = useCallback(() => {
     setError("");
     setSuccess("");
-  };
+  }, []);
 
   /*
    * ==========================================
@@ -103,13 +103,13 @@ const AdminDashboard = () => {
    * ==========================================
    */
 
-  const loadCurrentUser = async () => {
+  const loadCurrentUser = useCallback(async () => {
     const data = await apiRequest(
       "/auth/me"
     );
 
     setCurrentUser(data.user);
-  };
+  }, [apiRequest]);
 
   /*
    * ==========================================
@@ -117,13 +117,13 @@ const AdminDashboard = () => {
    * ==========================================
    */
 
-  const loadUsers = async () => {
+  const loadUsers = useCallback(async () => {
     const data = await apiRequest(
       "/admin/users"
     );
 
     setUsers(data.users || []);
-  };
+  }, [apiRequest]);
 
   /*
    * ==========================================
@@ -131,7 +131,7 @@ const AdminDashboard = () => {
    * ==========================================
    */
 
-  const loadCompetitions = async () => {
+  const loadCompetitions = useCallback(async () => {
     try {
       const data = await apiRequest(
         "/competitions"
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
 
       setCompetitions([]);
     }
-  };
+  }, [apiRequest]);
 
   /*
    * ==========================================
@@ -156,7 +156,7 @@ const AdminDashboard = () => {
    * ==========================================
    */
 
-  const loadResults = async () => {
+  const loadResults = useCallback(async () => {
     try {
       const data = await apiRequest(
         "/results"
@@ -171,7 +171,7 @@ const AdminDashboard = () => {
 
       setResults([]);
     }
-  };
+  }, [apiRequest]);
 
   /*
  * ==========================================
@@ -179,7 +179,7 @@ const AdminDashboard = () => {
  * ==========================================
  */
 
-const loadQueries = async () => {
+const loadQueries = useCallback(async () => {
   try {
     const data = await apiRequest("/queries");
 
@@ -192,7 +192,7 @@ const loadQueries = async () => {
 
     setQueries([]);
   }
-};
+}, [apiRequest]);
 
   /*
    * ==========================================
@@ -225,7 +225,14 @@ const loadQueries = async () => {
     };
 
     initialize();
-  }, []);
+  }, [
+    clearMessages,
+    loadCompetitions,
+    loadCurrentUser,
+    loadQueries,
+    loadResults,
+    loadUsers,
+  ]);
 
   /*
    * ==========================================
@@ -265,9 +272,6 @@ const loadQueries = async () => {
   const isSuperAdmin =
     currentUser?.role === "superadmin";
 
-  const isAdmin =
-    currentUser?.role === "admin";
-
   /*
    * ==========================================
    * STATISTICS
@@ -288,15 +292,6 @@ const loadQueries = async () => {
       users.filter(
         (user) =>
           user.role === "admin"
-      ),
-    [users]
-  );
-
-  const superAdmins = useMemo(
-    () =>
-      users.filter(
-        (user) =>
-          user.role === "superadmin"
       ),
     [users]
   );
