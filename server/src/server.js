@@ -8,11 +8,17 @@ const startServer = async () => {
   try {
     await connectDB();
 
-    app.listen(PORT, () => {
-      console.log(`API server listening on port ${PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(
+        `API server listening on port ${PORT}`
+      );
     });
   } catch (error) {
-    console.error("Unable to start API server:", error.message);
+    console.error(
+      "Unable to start API server:",
+      error.message
+    );
+
     process.exit(1);
   }
 };

@@ -52,7 +52,13 @@ export default function StudentRegister() {
           <div className="auth-field"><label htmlFor="schoolOrCoaching">School / Coaching Name</label><input id="schoolOrCoaching" name="schoolOrCoaching" value={form.schoolOrCoaching} onChange={updateField} required /></div>
           <div className="auth-field"><label htmlFor="password">Password</label><input id="password" name="password" type="password" value={form.password} onChange={updateField} autoComplete="new-password" required /></div>
           <div className="auth-field"><label htmlFor="confirmPassword">Confirm Password</label><input id="confirmPassword" name="confirmPassword" type="password" value={form.confirmPassword} onChange={updateField} autoComplete="new-password" required /></div>
-          <button className="auth-submit auth-field--full" type="submit" disabled={isSubmitting}>{isSubmitting ? "Creating account…" : "Create Student Account"}</button>
+          <button
+  className="auth-submit-btn auth-field--full"
+  type="submit"
+  disabled={isSubmitting}
+>
+  {isSubmitting ? "Creating account…" : "Create Student Account"}
+</button>
         </form>
         <p className="auth-switch">Already registered? <Link to="/login">Student Login</Link></p>
       </div>

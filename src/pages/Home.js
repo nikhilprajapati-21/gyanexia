@@ -75,7 +75,8 @@ const Home = () => {
         <span className="hero-shape hero-shape--three" aria-hidden="true">⚗</span>
         <div className="hero-content">
           <div className={`hero-text ${isVisible ? "visible" : ""}`}>
-            <p className="hero-kicker">LEARN • EXPLORE • SHINE</p>
+            <p className="hero-kicker">Welcome to Gyanexia</p>
+            {/* LEARN • EXPLORE • SHINE */}
             <h1 className="hero-title">
               A brighter way to <span className="hero-highlight">learn.</span>
             </h1>
@@ -86,9 +87,9 @@ const Home = () => {
             </p>
 
             <div className="hero-pills" aria-label="Learning areas">
-              <span>🔢 Maths</span>
-              <span>💡 Reasoning</span>
-              <span>🚀 Creativity</span>
+              <span>🔢 Learn→</span>
+              <span>💡 Test→</span>
+              <span>🚀 Analyse</span>
             </div>
 
             <div className="marquee-container">

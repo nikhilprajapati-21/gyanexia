@@ -10,57 +10,93 @@ const userSchema = new mongoose.Schema(
       minlength: [2, "Name must be at least 2 characters long."],
       maxlength: [80, "Name cannot exceed 80 characters."],
     },
+
     class: {
-      type: String,
-      required: [true, "Class is required."],
-      trim: true,
-      enum: {
-        values: ["5", "6", "7", "8", "9", "10", "11", "12"],
-        message: "Class must be between 5 and 12.",
-      },
-    },
+  type: String,
+  required: function () {
+    return this.role === "student";
+  },
+  trim: true,
+  enum: {
+    values: ["5", "6", "7", "8", "9", "10", "11", "12"],
+    message: "Class must be between 5 and 12.",
+  },
+},
+
     mobileNumber: {
       type: String,
       required: [true, "Mobile number is required."],
       unique: true,
       trim: true,
-      match: [/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number."],
+      match: [
+        /^[6-9]\d{9}$/,
+        "Enter a valid 10-digit Indian mobile number.",
+      ],
     },
+
     password: {
       type: String,
       required: [true, "Password is required."],
       minlength: [8, "Password must be at least 8 characters long."],
       select: false,
     },
+
     medium: {
-      type: String,
-      required: [true, "Medium is required."],
-      enum: ["Hindi", "English"],
-    },
-    schoolOrCoaching: {
-      type: String,
-      required: [true, "School or coaching is required."],
-      trim: true,
-      maxlength: [150, "School or coaching cannot exceed 150 characters."],
-    },
-    role: {
-      type: String,
-      enum: ["student", "admin"],
-      default: "student",
-      immutable: true,
-    },
+  type: String,
+  required: function () {
+    return this.role === "student";
   },
-  { timestamps: true }
+  enum: ["Hindi", "English"],
+},
+
+    schoolOrCoaching: {
+  type: String,
+  required: function () {
+    return this.role === "student";
+  },
+  trim: true,
+  maxlength: [
+    150,
+    "School or coaching cannot exceed 150 characters.",
+  ],
+},
+
+    // ==========================================
+    // USER ROLE
+    // ==========================================
+
+    role: {
+  type: String,
+  enum: ["student", "admin", "superadmin"],
+  default: "student",
+},
+  },
+  {
+    timestamps: true,
+  }
 );
 
+// ==========================================
+// HASH PASSWORD
+// ==========================================
+
 userSchema.pre("save", async function hashPassword(next) {
-  if (!this.isModified("password")) return next();
+  if (!this.isModified("password")) {
+    return next();
+  }
 
   this.password = await bcrypt.hash(this.password, 12);
+
   next();
 });
 
-userSchema.methods.comparePassword = function comparePassword(candidatePassword) {
+// ==========================================
+// COMPARE PASSWORD
+// ==========================================
+
+userSchema.methods.comparePassword = function comparePassword(
+  candidatePassword
+) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 

@@ -1,0 +1,292 @@
+.competition-details-page {
+  min-height: 75vh;
+  background: #f8f9fd;
+  padding: 45px 20px 80px;
+}
+
+.competition-details-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-dashboard-btn {
+  border: none;
+  background: transparent;
+  color: #7054c8;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.back-dashboard-btn:hover {
+  color: #4f389d;
+}
+
+.competition-details-card {
+  background: white;
+  border: 1px solid #e4e5ef;
+  border-radius: 22px;
+  padding: 35px;
+  box-shadow: 0 12px 35px rgba(42, 54, 104, 0.07);
+}
+
+.competition-status {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.status-upcoming {
+  background: #eeeaff;
+  color: #7050c5;
+}
+
+.status-open {
+  background: #e8fff4;
+  color: #1d805d;
+}
+
+.status-closed {
+  background: #fff3e8;
+  color: #b7651c;
+}
+
+.status-completed {
+  background: #eeeeee;
+  color: #666666;
+}
+
+.competition-details-top h1 {
+  margin: 14px 0 7px;
+  color: #273862;
+  font-size: 40px;
+}
+
+.competition-tagline {
+  margin: 0;
+  color: #7254cf;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.competition-description {
+  margin-top: 30px;
+}
+
+.competition-description h2,
+.competition-extra-section h2 {
+  margin-bottom: 8px;
+  color: #31426e;
+  font-size: 21px;
+}
+
+.competition-description p,
+.competition-extra-section p {
+  color: #687594;
+  line-height: 1.7;
+}
+
+.competition-information {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.competition-info-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  background: #faf9ff;
+  border: 1px solid #eeeaf8;
+  border-radius: 14px;
+}
+
+.competition-info-item > span {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: #eeeaff;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.competition-info-item small {
+  display: block;
+  color: #7d87a1;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.competition-info-item strong {
+  color: #30416e;
+  font-size: 14px;
+}
+
+.competition-extra-section {
+  margin-top: 28px;
+  padding-top: 25px;
+  border-top: 1px solid #eeeef5;
+}
+
+.competition-prize-section {
+  display: flex;
+  gap: 14px;
+  margin-top: 25px;
+  padding: 18px;
+  background: #fffaf0;
+  border: 1px solid #f2dfb5;
+  border-radius: 14px;
+}
+
+.competition-prize-section > span {
+  font-size: 23px;
+}
+
+.competition-prize-section strong {
+  color: #795718;
+}
+
+.competition-prize-section p {
+  margin: 4px 0 0;
+  color: #806a42;
+  line-height: 1.5;
+}
+
+.competition-registration-area {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #eeeef5;
+}
+
+.register-button,
+.registered-button {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 11px;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #6f56ce,
+    #a05dd7
+  );
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.register-button:hover:not(:disabled),
+.registered-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(111, 86, 206, 0.25);
+}
+
+.register-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.registered-message {
+  margin-bottom: 12px;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: #eafff5;
+  color: #18734f;
+  font-weight: 700;
+  text-align: center;
+}
+
+.registered-button {
+  background: #273862;
+}
+
+.registration-closed {
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff2f2;
+  color: #b64242;
+  text-align: center;
+  font-weight: 700;
+}
+
+.competition-inline-error {
+  margin-top: 20px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: #fff0f0;
+  border: 1px solid #f0c0c0;
+  color: #c03c3c;
+}
+
+.competition-success {
+  margin-top: 20px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: #eafff5;
+  border: 1px solid #bdebd6;
+  color: #18734f;
+  font-weight: 700;
+}
+
+.competition-details-loading {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  color: #65718f;
+}
+
+.competition-details-error {
+  max-width: 600px;
+  margin: 70px auto;
+  padding: 35px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e4e5ef;
+  border-radius: 18px;
+}
+
+.competition-details-error h2 {
+  color: #273862;
+}
+
+.competition-details-error p {
+  color: #687594;
+}
+
+.competition-details-error button {
+  margin-top: 15px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #7254cf;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .competition-details-page {
+    padding: 30px 15px 60px;
+  }
+
+  .competition-details-card {
+    padding: 22px;
+  }
+
+  .competition-details-top h1 {
+    font-size: 30px;
+  }
+
+  .competition-information {
+    grid-template-columns: 1fr;
+  }
+}

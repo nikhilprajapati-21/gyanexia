@@ -4,6 +4,7 @@ import "./Donate.css";
 const Donate = () => {
 
   const loaded = useRef(false);
+  const paymentButtonId = process.env.REACT_APP_RAZORPAY_PAYMENT_BUTTON_ID;
 
   useEffect(() => {
 
@@ -13,7 +14,7 @@ const Donate = () => {
 
     const form = document.getElementById("razorpay-form");
 
-    if (!form) return;
+    if (!form || !paymentButtonId) return;
 
     // Clear old content
     form.innerHTML = "";
@@ -27,12 +28,12 @@ const Donate = () => {
 
     script.setAttribute(
       "data-payment_button_id",
-      "pl_St4dCYhS3riop7"
+      paymentButtonId
     );
 
     form.appendChild(script);
 
-  }, []);
+  }, [paymentButtonId]);
 
   return (
     <div className="donate-page">
@@ -61,7 +62,11 @@ const Donate = () => {
         </p>
 
         {/* Razorpay Button */}
-        <form id="razorpay-form"></form>
+        {paymentButtonId ? (
+          <form id="razorpay-form"></form>
+        ) : (
+          <p className="donate-text">Donations are being configured. Please check back soon.</p>
+        )}
 
       </div>
 
