@@ -5,12 +5,37 @@ import {
   getMyRegistrations,
   getMyRegistration,
   verifyPayment,
+  getAllRegistrations,
 } from "../controllers/registrationController.js";
 
-import { protect } from "../middleware/authMiddleware.js";
+import {
+  protect,
+  adminOrSuperAdmin,
+} from "../middleware/authMiddleware.js";
 
-const router =
-  express.Router();
+const router = express.Router();
+
+
+/*
+ * ==========================================
+ * ADMIN - ALL COMPETITION REGISTRATIONS
+ * ==========================================
+ *
+ * IMPORTANT:
+ * This route must come BEFORE:
+ *
+ * /my/:id
+ *
+ * because "admin" must not be treated as
+ * a registration ID.
+ */
+
+router.get(
+  "/admin/all",
+  protect,
+  adminOrSuperAdmin,
+  getAllRegistrations
+);
 
 
 /*
@@ -54,7 +79,7 @@ router.get(
 
 /*
  * ==========================================
- * SINGLE REGISTRATION
+ * SINGLE MY REGISTRATION
  * ==========================================
  */
 

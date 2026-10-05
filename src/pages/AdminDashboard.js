@@ -1,7 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./AdminDashboard.css";
 import { API_BASE_URL } from "../services/api";
-
+import {
+  authApi,
+  queryApi,
+  competitionApi,
+  resultApi,
+  registrationApi,
+} from "../services/api";
 const API_BASE = API_BASE_URL;
 
 const emptyCompetition = {
@@ -28,6 +34,7 @@ const AdminDashboard = () => {
   const [competitions, setCompetitions] = useState([]);
   const [results, setResults] = useState([]);
   const [queries, setQueries] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] =
@@ -194,6 +201,47 @@ const loadQueries = useCallback(async () => {
   }
 }, [apiRequest]);
 
+
+
+
+/*
+ * ==========================================
+ * LOAD COMPETITION REGISTRATIONS
+ * ==========================================
+ */
+
+const loadRegistrations = useCallback(async () => {
+  try {
+    const data = await apiRequest(
+      "/registrations/admin/all"
+    );
+
+    console.log(
+      "ADMIN REGISTRATIONS:",
+      data
+    );
+
+    setRegistrations(
+      Array.isArray(data?.registrations)
+        ? data.registrations
+        : []
+    );
+
+  } catch (error) {
+    console.error(
+      "REGISTRATION API ERROR:",
+      error
+    );
+
+    setRegistrations([]);
+
+    setError(
+      error?.message ||
+        "Unable to load competition registrations."
+    );
+  }
+}, [apiRequest]);
+
   /*
    * ==========================================
    * INITIAL LOAD
@@ -211,6 +259,7 @@ const loadQueries = useCallback(async () => {
         await loadCompetitions();
         await loadResults();
         await loadQueries();
+        await loadRegistrations();
 
       } catch (error) {
         console.error(error);
@@ -249,6 +298,7 @@ const loadQueries = useCallback(async () => {
       await loadCompetitions();
       await loadResults();
       await loadQueries();
+      await loadRegistrations();
 
       setSuccess(
         "Dashboard refreshed successfully."
@@ -315,6 +365,13 @@ const loadQueries = useCallback(async () => {
       icon: "🎓",
       roles: ["admin", "superadmin"],
     },
+
+    {
+  id: "registrations",
+  label: "Registrations",
+  icon: "📋",
+  roles: ["admin", "superadmin"],
+},
     {
   id: "queries",
   label: "Queries",
@@ -1183,6 +1240,189 @@ const publishCompetitionResults = async (
       </section>
     </>
   );
+
+
+/*
+ * ==========================================
+ * REGISTRATIONS
+ * ==========================================
+ */
+
+const renderRegistrations = () => (
+  <section className="admin-panel">
+
+    <div className="admin-panel-header">
+      <div>
+        <p className="admin-eyebrow">
+          COMPETITION MANAGEMENT
+        </p>
+
+        <h2>
+          Competition Registrations
+        </h2>
+
+        <p>
+          View students who have successfully
+          registered for competitions.
+        </p>
+      </div>
+
+      <div>
+        <strong>
+          {registrations.length}
+        </strong>
+
+        <span>
+          {" "}Registered
+        </span>
+      </div>
+    </div>
+
+
+    {registrations.length === 0 ? (
+      <div className="admin-empty">
+
+        <div
+          style={{
+            fontSize: "48px",
+            marginBottom: "12px",
+          }}
+        >
+          📋
+        </div>
+
+        <h3>
+          No competition registrations yet.
+        </h3>
+
+        <p>
+          Students who successfully complete
+          competition registration will appear here.
+        </p>
+
+      </div>
+    ) : (
+
+      <div className="admin-table-wrapper">
+
+        <table className="admin-table">
+
+          <thead>
+            <tr>
+              <th>Registration ID</th>
+              <th>Student</th>
+              <th>Mobile</th>
+              <th>Class</th>
+              <th>School / Coaching</th>
+              <th>Competition</th>
+              <th>Parent Name</th>
+              <th>Parent Mobile</th>
+              <th>Payment</th>
+              <th>Registered At</th>
+            </tr>
+          </thead>
+
+
+          <tbody>
+
+            {registrations.map(
+              (registration) => (
+
+                <tr
+                  key={registration._id}
+                >
+
+                  <td>
+                    <strong>
+                      {registration.registrationId ||
+                        "—"}
+                    </strong>
+                  </td>
+
+
+                  <td>
+                    <strong>
+                      {registration.student?.name ||
+                        registration.name ||
+                        "Unknown"}
+                    </strong>
+                  </td>
+
+
+                  <td>
+                    {registration.student?.mobileNumber ||
+                      registration.mobileNumber ||
+                      "—"}
+                  </td>
+
+
+                  <td>
+                    {registration.student?.class ||
+                      registration.class ||
+                      "—"}
+                  </td>
+
+
+                  <td>
+                    {registration.student?.schoolOrCoaching ||
+                      registration.schoolOrCoaching ||
+                      "—"}
+                  </td>
+
+
+                  <td>
+                    <strong>
+                      {registration.competition?.name ||
+                        "Unknown Competition"}
+                    </strong>
+                  </td>
+
+
+                  <td>
+                    {registration.parentName ||
+                      "—"}
+                  </td>
+
+
+                  <td>
+                    {registration.parentMobileNumber ||
+                      "—"}
+                  </td>
+
+
+                  <td>
+                    <span className="published-badge">
+                      Paid
+                    </span>
+                  </td>
+
+
+                  <td>
+                    {registration.registeredAt
+                      ? new Date(
+                          registration.registeredAt
+                        ).toLocaleString()
+                      : "—"}
+                  </td>
+
+                </tr>
+
+              )
+            )}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    )}
+
+  </section>
+);
+
+
+
 
   /*
    * ==========================================

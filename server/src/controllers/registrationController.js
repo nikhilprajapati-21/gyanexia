@@ -483,6 +483,9 @@ export const verifyPayment = async (
     }
 
 
+
+    
+
     /*
      * ------------------------------------------
      * ALREADY PAID
@@ -599,9 +602,10 @@ export const verifyPayment = async (
     ) {
 
       registration.registrationId =
-        await generateRegistrationId(
-          competition
-        );
+  await generateRegistrationId(
+    competition,
+    registration.class
+  );
     }
 
 
@@ -783,3 +787,48 @@ export const getMyRegistration =
       return next(error);
     }
   };
+
+  /*
+ * ==========================================
+ * GET ALL COMPETITION REGISTRATIONS
+ * ==========================================
+ *
+ * ADMIN + SUPERADMIN ONLY
+ *
+ * Returns completed/paid registrations.
+ */
+export const getAllRegistrations = async (
+  request,
+  response,
+  next
+) => {
+  try {
+    const registrations = await Registration.find({
+      paymentStatus: "paid",
+    })
+      .populate(
+        "competition",
+        "name tagline examDate mode registrationFee registrationCode status"
+      )
+      .populate(
+        "student",
+        "name mobileNumber class medium schoolOrCoaching role"
+      )
+      .sort({
+        registeredAt: -1,
+        createdAt: -1,
+      });
+
+    return response.status(200).json({
+      registrations,
+      count: registrations.length,
+    });
+  } catch (error) {
+    console.error(
+      "GET ALL REGISTRATIONS ERROR:",
+      error
+    );
+
+    return next(error);
+  }
+};

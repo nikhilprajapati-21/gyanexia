@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import Competition from "../models/Competition.js";
 import Result from "../models/Result.js";
 import Certificate from "../models/Certificate.js";
+import Registration from "../models/Registration.js";
 
 
 /*
@@ -119,6 +120,10 @@ export const deleteStudent = async (
     await Certificate.deleteMany({
       student: student._id,
     });
+
+    await Registration.deleteMany({
+  student: student._id,
+});
 
     await student.deleteOne();
 

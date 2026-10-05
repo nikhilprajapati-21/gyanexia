@@ -16,18 +16,10 @@ export const API_BASE_URL = (
  * ==========================================
  */
 
-export async function apiRequest(
-  endpoint,
-  options = {}
-) {
+export async function apiRequest(endpoint, options = {}) {
   const response = await fetch(
     `${API_BASE_URL}${endpoint}`,
     {
-      /*
-       * IMPORTANT
-       * Allows browser to send/receive
-       * authentication cookies.
-       */
       credentials: "include",
 
       headers: {
@@ -70,84 +62,38 @@ export async function apiRequest(
  */
 
 export const authApi = {
-
-  /*
-   * GET CURRENT USER
-   */
-
   me: async () => {
-    return apiRequest(
-      "/auth/me",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/auth/me", {
+      method: "GET",
+    });
   },
-
-
-  /*
-   * LOGIN
-   */
 
   login: async (credentials) => {
-    return apiRequest(
-      "/auth/login",
-      {
-        method: "POST",
-        body: JSON.stringify(credentials),
-      }
-    );
+    return apiRequest("/auth/login", {
+      method: "POST",
+      body: JSON.stringify(credentials),
+    });
   },
-
-
-  /*
-   * LOGOUT
-   */
 
   logout: async () => {
-    return apiRequest(
-      "/auth/logout",
-      {
-        method: "POST",
-      }
-    );
+    return apiRequest("/auth/logout", {
+      method: "POST",
+    });
   },
-
-
-  /*
-   * STUDENT REGISTRATION
-   */
 
   registerStudent: async (studentData) => {
-    return apiRequest(
-      "/auth/register",
-      {
-        method: "POST",
-        body: JSON.stringify(studentData),
-      }
-    );
+    return apiRequest("/auth/register", {
+      method: "POST",
+      body: JSON.stringify(studentData),
+    });
   },
-
-
-  /*
-   * ALIAS
-   *
-   * This also allows code such as:
-   *
-   * authApi.register(...)
-   *
-   */
 
   register: async (studentData) => {
-    return apiRequest(
-      "/auth/register",
-      {
-        method: "POST",
-        body: JSON.stringify(studentData),
-      }
-    );
+    return apiRequest("/auth/register", {
+      method: "POST",
+      body: JSON.stringify(studentData),
+    });
   },
-
 };
 
 
@@ -158,71 +104,43 @@ export const authApi = {
  */
 
 export const queryApi = {
-
   create: async (queryData) => {
-    return apiRequest(
-      "/queries",
-      {
-        method: "POST",
-        body: JSON.stringify(queryData),
-      }
-    );
+    return apiRequest("/queries", {
+      method: "POST",
+      body: JSON.stringify(queryData),
+    });
   },
-
 
   mine: async () => {
-    return apiRequest(
-      "/queries/my",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/queries/my", {
+      method: "GET",
+    });
   },
-
 
   all: async () => {
-    return apiRequest(
-      "/queries",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/queries", {
+      method: "GET",
+    });
   },
-
 
   get: async (id) => {
-    return apiRequest(
-      `/queries/${id}`,
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest(`/queries/${id}`, {
+      method: "GET",
+    });
   },
 
-
-  update: async (
-    id,
-    queryData
-  ) => {
-    return apiRequest(
-      `/queries/${id}`,
-      {
-        method: "PATCH",
-        body: JSON.stringify(queryData),
-      }
-    );
+  update: async (id, queryData) => {
+    return apiRequest(`/queries/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(queryData),
+    });
   },
-
 
   delete: async (id) => {
-    return apiRequest(
-      `/queries/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    return apiRequest(`/queries/${id}`, {
+      method: "DELETE",
+    });
   },
-
 };
 
 
@@ -233,62 +151,100 @@ export const queryApi = {
  */
 
 export const competitionApi = {
-
-  /*
-   * GET ALL COMPETITIONS
-   */
-
   all: async () => {
-    return apiRequest(
-      "/competitions",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/competitions", {
+      method: "GET",
+    });
   },
-
-
-  /*
-   * GET UPCOMING COMPETITIONS
-   */
 
   upcoming: async () => {
-    return apiRequest(
-      "/competitions/upcoming",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/competitions/upcoming", {
+      method: "GET",
+    });
   },
-
-
-  /*
-   * GET SINGLE COMPETITION
-   */
 
   get: async (id) => {
-    return apiRequest(
-      `/competitions/${id}`,
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest(`/competitions/${id}`, {
+      method: "GET",
+    });
+  },
+
+  register: async (id) => {
+    return apiRequest(`/competitions/${id}/register`, {
+      method: "POST",
+    });
+  },
+};
+
+
+/*
+ * ==========================================
+ * REGISTRATION API
+ * ==========================================
+ */
+
+export const registrationApi = {
+
+  /*
+   * STUDENT
+   * CREATE REGISTRATION
+   */
+
+  create: async (registrationData) => {
+    return apiRequest("/registrations", {
+      method: "POST",
+      body: JSON.stringify(registrationData),
+    });
   },
 
 
   /*
-   * REGISTER FOR COMPETITION
+   * STUDENT
+   * VERIFY PAYMENT
    */
 
-  register: async (id) => {
-    return apiRequest(
-      `/competitions/${id}/register`,
-      {
-        method: "POST",
-      }
-    );
+  verifyPayment: async (paymentData) => {
+    return apiRequest("/registrations/verify-payment", {
+      method: "POST",
+      body: JSON.stringify(paymentData),
+    });
   },
 
+
+  /*
+   * STUDENT
+   * GET MY REGISTRATIONS
+   */
+
+  mine: async () => {
+    return apiRequest("/registrations/my", {
+      method: "GET",
+    });
+  },
+
+
+  /*
+   * STUDENT
+   * GET SINGLE REGISTRATION
+   */
+
+  getMine: async (id) => {
+    return apiRequest(`/registrations/my/${id}`, {
+      method: "GET",
+    });
+  },
+
+
+  /*
+   * ADMIN / SUPERADMIN
+   * GET ALL PAID REGISTRATIONS
+   */
+
+  adminAll: async () => {
+    return apiRequest("/registrations/admin/all", {
+      method: "GET",
+    });
+  },
 };
 
 
@@ -299,16 +255,11 @@ export const competitionApi = {
  */
 
 export const resultApi = {
-
   mine: async () => {
-    return apiRequest(
-      "/results/my",
-      {
-        method: "GET",
-      }
-    );
+    return apiRequest("/results/my", {
+      method: "GET",
+    });
   },
-
 };
 
 
@@ -319,18 +270,13 @@ export const resultApi = {
  */
 
 export const aiApi = {
-
   chat: async (message) => {
-    return apiRequest(
-      "/ai/chat",
-      {
-        method: "POST",
+    return apiRequest("/ai/chat", {
+      method: "POST",
 
-        body: JSON.stringify({
-          message,
-        }),
-      }
-    );
+      body: JSON.stringify({
+        message,
+      }),
+    });
   },
-
 };
