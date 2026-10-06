@@ -217,9 +217,23 @@ const loadRegistrations = useCallback(async () => {
     );
 
     console.log(
-      "ADMIN REGISTRATIONS:",
-      data
-    );
+  "========== ADMIN REGISTRATIONS =========="
+);
+
+console.log(
+  "FULL RESPONSE:",
+  JSON.stringify(data, null, 2)
+);
+
+console.log(
+  "REGISTRATIONS:",
+  data?.registrations
+);
+
+console.log(
+  "REGISTRATION COUNT:",
+  data?.count
+);
 
     setRegistrations(
       Array.isArray(data?.registrations)
@@ -3323,6 +3337,10 @@ const renderQueries = () => (
           {activeSection ===
             "students" &&
             renderStudents()}
+
+            {activeSection ===
+  "registrations" &&
+  renderRegistrations()}
 
           {activeSection ===
             "competitions" &&
