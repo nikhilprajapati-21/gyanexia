@@ -1,13 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./AdminDashboard.css";
 import { API_BASE_URL } from "../services/api";
-import {
-  authApi,
-  queryApi,
-  competitionApi,
-  resultApi,
-  registrationApi,
-} from "../services/api";
+
 const API_BASE = API_BASE_URL;
 
 const emptyCompetition = {
@@ -217,30 +211,16 @@ const loadRegistrations = useCallback(async () => {
     );
 
     console.log(
-  "========== ADMIN REGISTRATIONS =========="
-);
-
-console.log(
-  "FULL RESPONSE:",
-  JSON.stringify(data, null, 2)
-);
-
-console.log(
-  "REGISTRATIONS:",
-  data?.registrations
-);
-
-console.log(
-  "REGISTRATION COUNT:",
-  data?.count
-);
-
-    setRegistrations(
-      Array.isArray(data?.registrations)
-        ? data.registrations
-        : []
+      "ADMIN REGISTRATIONS:",
+      data
     );
 
+    const registrationList =
+      Array.isArray(data?.registrations)
+        ? data.registrations
+        : [];
+
+    setRegistrations(registrationList);
   } catch (error) {
     console.error(
       "REGISTRATION API ERROR:",
@@ -262,40 +242,41 @@ console.log(
    * ==========================================
    */
 
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        setLoading(true);
-        clearMessages();
+ useEffect(() => {
+  const initialize = async () => {
+    try {
+      setLoading(true);
+      clearMessages();
 
-        await loadCurrentUser();
-        await loadUsers();
-        await loadCompetitions();
-        await loadResults();
-        await loadQueries();
-        await loadRegistrations();
+      await loadCurrentUser();
+      await loadUsers();
+      await loadCompetitions();
+      await loadResults();
+      await loadQueries();
+      await loadRegistrations();
 
-      } catch (error) {
-        console.error(error);
+    } catch (error) {
+      console.error(error);
 
-        setError(
-          error.message ||
-            "Unable to load admin dashboard."
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+      setError(
+        error.message ||
+          "Unable to load admin dashboard."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    initialize();
-  }, [
-    clearMessages,
-    loadCompetitions,
-    loadCurrentUser,
-    loadQueries,
-    loadResults,
-    loadUsers,
-  ]);
+  initialize();
+}, [
+  clearMessages,
+  loadCompetitions,
+  loadCurrentUser,
+  loadQueries,
+  loadRegistrations,
+  loadResults,
+  loadUsers,
+]);
 
   /*
    * ==========================================
