@@ -74,10 +74,9 @@ const competitionSchema =
       },
 
       prizeDetails: {
-        type: String,
-        default: "",
-        trim: true,
-      },
+     type: mongoose.Schema.Types.Mixed,
+     default: {},
+       },
 
       subjectsAndTopics: {
         type: String,

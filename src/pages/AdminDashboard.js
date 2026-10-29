@@ -11,7 +11,21 @@ const emptyCompetition = {
   eligibleClasses: [],
   mode: "Offline",
   examDate: "",
-  prizeDetails: "",
+  prizeDetails: `{
+  "first": {
+    "title": "1st Position",
+    "rewards": []
+  },
+  "second": {
+    "title": "2nd Position",
+    "rewards": []
+  },
+  "third": {
+    "title": "3rd Position",
+    "rewards": []
+  },
+  "special": ""
+}`,
   subjectsAndTopics: "",
   totalMarks: 100,
   registrationOpen: false,
@@ -632,8 +646,14 @@ const loadRegistrations = useCallback(async () => {
 
     examDate: competition.examDate || "",
 
-    prizeDetails:
-      competition.prizeDetails || "",
+   prizeDetails:
+  typeof competition.prizeDetails === "string"
+    ? competition.prizeDetails
+    : JSON.stringify(
+        competition.prizeDetails || {},
+        null,
+        2
+      ),
 
     subjectsAndTopics:
       competition.subjectsAndTopics || "",
@@ -702,6 +722,23 @@ const loadRegistrations = useCallback(async () => {
         "Total marks must be greater than 0."
       );
     }
+      let parsedPrizeDetails = {};
+
+try {
+  if (
+    typeof competitionForm.prizeDetails === "string" &&
+    competitionForm.prizeDetails.trim()
+  ) {
+    parsedPrizeDetails = JSON.parse(
+      competitionForm.prizeDetails
+    );
+  }
+} catch (error) {
+  throw new Error(
+    "Prize Details must be valid JSON."
+  );
+}
+
 
     const competitionData = {
       name: competitionForm.name.trim(),
@@ -723,8 +760,7 @@ const loadRegistrations = useCallback(async () => {
       examDate:
         competitionForm.examDate?.trim() || "",
 
-      prizeDetails:
-        competitionForm.prizeDetails?.trim() || "",
+      prizeDetails: parsedPrizeDetails,
 
       subjectsAndTopics:
         competitionForm.subjectsAndTopics?.trim() || "",
@@ -2792,16 +2828,26 @@ const renderQueries = () => (
                 </label>
 
                 <textarea
-                  name="prizeDetails"
-                  value={
-                    competitionForm.prizeDetails
-                  }
-                  onChange={
-                    handleCompetitionChange
-                  }
-                  rows="2"
-                  placeholder="Prize details"
-                />
+  name="prizeDetails"
+  value={competitionForm.prizeDetails}
+  onChange={handleCompetitionChange}
+  rows="14"
+  placeholder={`{
+  "first": {
+    "title": "1st Position",
+    "rewards": []
+  },
+  "second": {
+    "title": "2nd Position",
+    "rewards": []
+  },
+  "third": {
+    "title": "3rd Position",
+    "rewards": []
+  },
+  "special": ""
+}`}
+/>
               </div>
 
 

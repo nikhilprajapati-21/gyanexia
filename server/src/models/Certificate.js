@@ -25,6 +25,7 @@ const certificateSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      
     },
 
     issuedAt: {

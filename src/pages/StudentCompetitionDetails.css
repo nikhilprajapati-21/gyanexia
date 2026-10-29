@@ -135,29 +135,95 @@
   border-top: 1px solid #eeeef5;
 }
 
+/* ==========================================
+   PRIZES
+   ========================================== */
+
 .competition-prize-section {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   margin-top: 25px;
-  padding: 18px;
+  padding: 20px;
   background: #fffaf0;
   border: 1px solid #f2dfb5;
   border-radius: 14px;
 }
 
-.competition-prize-section > span {
-  font-size: 23px;
+.prize-main-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: white;
+  border-radius: 12px;
+  font-size: 22px;
+  box-shadow: 0 3px 10px rgba(100, 70, 20, 0.08);
 }
 
-.competition-prize-section strong {
+.prize-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.prize-heading {
+  display: block;
   color: #795718;
+  font-size: 18px;
+  margin-bottom: 14px;
 }
 
-.competition-prize-section p {
+.prize-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prize-item {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #f0dfbd;
+  border-radius: 11px;
+  padding: 13px 15px;
+}
+
+.prize-item h3 {
+  margin: 0 0 7px;
+  color: #765218;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.prize-item ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #806a42;
+}
+
+.prize-item li {
+  margin: 4px 0;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.prize-special {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #eef8f1;
+  border: 1px solid #cce8d4;
+  color: #28734a;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.prize-fallback-text {
   margin: 4px 0 0;
   color: #806a42;
   line-height: 1.5;
 }
+
+/* ==========================================
+   REGISTRATION
+   ========================================== */
 
 .competition-registration-area {
   margin-top: 30px;
@@ -237,12 +303,20 @@
   font-weight: 700;
 }
 
+/* ==========================================
+   LOADING
+   ========================================== */
+
 .competition-details-loading {
   min-height: 60vh;
   display: grid;
   place-items: center;
   color: #65718f;
 }
+
+/* ==========================================
+   ERROR
+   ========================================== */
 
 .competition-details-error {
   max-width: 600px;
@@ -273,6 +347,10 @@
   cursor: pointer;
 }
 
+/* ==========================================
+   MOBILE
+   ========================================== */
+
 @media (max-width: 700px) {
   .competition-details-page {
     padding: 30px 15px 60px;
@@ -288,5 +366,32 @@
 
   .competition-information {
     grid-template-columns: 1fr;
+  }
+
+  .competition-prize-section {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .prize-main-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 19px;
+  }
+
+  .prize-item {
+    padding: 11px 12px;
+  }
+
+  .prize-item h3 {
+    font-size: 15px;
+  }
+
+  .prize-item li {
+    font-size: 13px;
+  }
+
+  .prize-special {
+    font-size: 13px;
   }
 }

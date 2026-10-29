@@ -93,14 +93,18 @@ const Home = () => {
             </div>
 
             <div className="marquee-container">
-              <div className="marquee-content">
-                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
-                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
-                <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
-               <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
-               <span>🏆 Gyanexia Talent Hunt 2026 is Coming This December – Registrations Opening Soon!</span>
-              </div>
-            </div>
+  <div className="marquee-content">
+    {[1, 2, 3, 4, 5].map((item) => (
+      <span key={item}>
+        🏆 Gyanexia Talent Hunt 2026 – Registrations Are Now Open!{" "}
+        <a href="/competitions" className="marquee-link">
+          Click Here!
+        </a>
+      </span>
+      
+    ))}
+  </div>
+</div>
           </div>
         </div>
       </section>

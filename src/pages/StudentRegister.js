@@ -6,6 +6,7 @@ import "./Auth.css";
 const initialForm = {
   name: "",
   class: "",
+  stream: "",
   mobileNumber: "",
   password: "",
   confirmPassword: "",
@@ -20,17 +21,29 @@ export default function StudentRegister() {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const updateField = (event) => {
-    const { name, value } = event.target;
+ const updateField = (event) => {
+  const { name, value } = event.target;
 
-    setForm((current) => ({
+  setForm((current) => {
+    const updatedForm = {
       ...current,
       [name]:
         name === "mobileNumber"
           ? value.replace(/\D/g, "").slice(0, 10)
           : value,
-    }));
-  };
+    };
+
+    // Stream is required only for Classes 11 and 12.
+    if (
+      name === "class" &&
+      !["11", "12"].includes(value)
+    ) {
+      updatedForm.stream = "";
+    }
+
+    return updatedForm;
+  });
+};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,6 +60,17 @@ export default function StudentRegister() {
     if (!form.class) {
       return setError("Please select your class.");
     }
+
+    if (
+  ["11", "12"].includes(form.class) &&
+  !form.stream
+) {
+  return setError(
+    "Please select Mathematics or Biology."
+  );
+}
+
+
 
     if (!form.medium) {
       return setError("Please select your medium.");
@@ -179,35 +203,64 @@ export default function StudentRegister() {
             />
           </div>
 
-          {/* Class */}
-          <div className="auth-field">
-            <label htmlFor="class">
-              Class
-            </label>
+         {/* Class */}
+<div className="auth-field">
+  <label htmlFor="class">
+    Class
+  </label>
 
-            <select
-              id="class"
-              name="class"
-              value={form.class}
-              onChange={updateField}
-              required
-            >
-              <option value="">
-                Select class
-              </option>
+  <select
+    id="class"
+    name="class"
+    value={form.class}
+    onChange={updateField}
+    required
+  >
+    <option value="">
+      Select class
+    </option>
 
-              {[5, 6, 7, 8, 9, 10, 11, 12].map(
-                (studentClass) => (
-                  <option
-                    key={studentClass}
-                    value={studentClass}
-                  >
-                    Class {studentClass}
-                  </option>
-                )
-              )}
-            </select>
-          </div>
+    {[5, 6, 7, 8, 9, 10, 11, 12].map(
+      (studentClass) => (
+        <option
+          key={studentClass}
+          value={studentClass}
+        >
+          Class {studentClass}
+        </option>
+      )
+    )}
+  </select>
+</div>
+
+{/* Stream — only for Classes 11 and 12 */}
+{["11", "12"].includes(form.class) && (
+  <div className="auth-field">
+    <label htmlFor="stream">
+      Stream
+    </label>
+
+    <select
+      id="stream"
+      name="stream"
+      value={form.stream}
+      onChange={updateField}
+      required
+    >
+      <option value="">
+        Select stream
+      </option>
+
+      <option value="Mathematics">
+        Mathematics
+      </option>
+
+      <option value="Biology">
+        Biology
+      </option>
+    </select>
+  </div>
+)}
 
           {/* Medium */}
           <div className="auth-field">

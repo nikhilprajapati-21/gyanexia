@@ -1068,29 +1068,66 @@ export default function Competitions() {
 
                 {/* PRIZE */}
 
-                {competition.prizeDetails && (
-                  <div className="competition-prize">
+{competition.prizeDetails && (
+  <div className="competition-prize">
 
-                    <div className="prize-icon">
-                      🏅
-                    </div>
+    <div className="prize-icon">
+      🏅
+    </div>
 
-                    <div>
+    <div>
 
-                      <span>
-                        Prizes
-                      </span>
+      <span>
+        Prizes
+      </span>
 
-                      <strong>
-                        {
-                          competition.prizeDetails
-                        }
-                      </strong>
+      {typeof competition.prizeDetails === "object" &&
+      !Array.isArray(competition.prizeDetails) ? (
+        <div className="competition-prize-summary">
 
-                    </div>
+          {competition.prizeDetails.first && (
+            <div>
+              <strong>
+                🥇 {competition.prizeDetails.first.title}
+              </strong>
+            </div>
+          )}
 
-                  </div>
-                )}
+          {competition.prizeDetails.second && (
+            <div>
+              <strong>
+                🥈 {competition.prizeDetails.second.title}
+              </strong>
+            </div>
+          )}
+
+          {competition.prizeDetails.third && (
+            <div>
+              <strong>
+                🥉 {competition.prizeDetails.third.title}
+              </strong>
+            </div>
+          )}
+
+          {competition.prizeDetails.special && (
+            <div>
+              <span>
+                🏅 {competition.prizeDetails.special}
+              </span>
+            </div>
+          )}
+
+        </div>
+      ) : (
+        <strong>
+          {competition.prizeDetails}
+        </strong>
+      )}
+
+    </div>
+
+  </div>
+)}
 
 
                 {/* SUBJECTS */}
