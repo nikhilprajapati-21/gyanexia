@@ -14,6 +14,7 @@ import competitionRoutes from "./routes/competitionRoutes.js";
 import studentCompetitionRoutes from "./routes/studentCompetitionRoutes.js";
 import queryRoutes from "./routes/queryRoutes.js";
 import registrationRoutes from "./routes/registrationRoutes.js";
+import donationRoutes from "./routes/donationRoutes.js";
 
 const app = express();
 
@@ -209,6 +210,11 @@ app.use(
 app.use(
   "/api/registrations",
   registrationRoutes
+);
+
+app.use(
+  "/api/donations",
+  donationRoutes
 );
 
 app.use(
